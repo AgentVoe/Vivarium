@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Vivarium.Context;
 
+/// <summary>
+/// Оценка пользователем книги
+/// </summary>
 public partial class Assessment
 {
     public int Id { get; set; }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Vivarium.Context;
 
+/// <summary>
+/// Вызов
+/// </summary>
 public partial class Challenge
 {
     public int Id { get; set; }

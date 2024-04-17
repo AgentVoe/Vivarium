@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Vivarium.Context;
 
+/// <summary>
+/// Книга и ее автор
+/// </summary>
 public partial class BooksAuthor
 {
     public int Id { get; set; }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Vivarium.Context;
 
+/// <summary>
+/// Книгга
+/// </summary>
 public partial class Book
 {
     public int Id { get; set; }

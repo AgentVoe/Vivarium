@@ -28,10 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="лого.png" />
-    <Resource Include="мозг.png" />
-    <Resource Include="поиск.png" />
-    <Resource Include="рука.png" />
+    <Resource Include="WPFforms\pics\лого.png" />
+    <Resource Include="WPFforms\pics\мозг.png" />
+    <Resource Include="WPFforms\pics\поиск.png" />
+    <Resource Include="WPFforms\pics\рука.png" />
   </ItemGroup>
 
 </Project>

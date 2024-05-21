@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
-        Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE">
+        Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
     <Grid Background="#FFF4EEEE" Height="700" Width="1300">
         <Grid>
             <Rectangle Height="80" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1200">
@@ -43,7 +43,7 @@
                 </Image.LayoutTransform>
             </Image>
             <TextBlock HorizontalAlignment="Left" Margin="444,443,0,0" Text="В этом году я прочитаю" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19"/>
-            <TextBox HorizontalAlignment="Left" Height="65" Margin="698,422,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" RenderTransformOrigin="1.076,0.493"/>
+            <TextBox x:Name="CountBooks" HorizontalAlignment="Left" Height="65" Margin="698,422,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" RenderTransformOrigin="1.076,0.493" TextChanged="TextBox_TextChanged" FontSize="50" FontWeight="Bold" TextAlignment="Center"/>
             <TextBlock HorizontalAlignment="Left" Margin="823,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" RenderTransformOrigin="0.31,0.33"><Run Language="ru-ru" Text="книг"/><LineBreak/><Run Language="ru-ru"/></TextBlock>
             <Button Content="Принять вызов" HorizontalAlignment="Center" Height="64" Margin="0,526,0,0" VerticalAlignment="Top" Width="424" Click="Button_Click" FontWeight="Bold" FontSize="19">
                 <Button.Resources>

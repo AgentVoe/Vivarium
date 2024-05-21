@@ -22,6 +22,22 @@ namespace Vivarium.WPFforms
         public ChallengeAfter()
         {
             InitializeComponent();
+
+            double fact = 5; // получить fact из Challenge для UserId
+            double plan = 10; // получить plan из Challenge для UserId
+
+            TextResult.Text = $"Вы прочли {fact} из {plan} книг";
+                        
+            double percent = Math.Round(fact/plan * 100);
+
+            if (fact >= plan)
+            {
+                TextResult.Text += "\nЦель достигнута, поздравляем!";
+                percent = 100;
+            }
+
+            TextPercent.Text = $"{percent}%";
+            RectFact.Width = percent/100 * RectPlan.Width;
         }
     }
 }

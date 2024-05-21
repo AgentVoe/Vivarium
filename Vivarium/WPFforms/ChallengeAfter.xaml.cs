@@ -39,5 +39,12 @@ namespace Vivarium.WPFforms
             TextPercent.Text = $"{percent}%";
             RectFact.Width = percent/100 * RectPlan.Width;
         }
+
+        private void Statistics_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Statistics statistics = new Statistics();
+            statistics.Show();
+            this.Close();
+        }
     }
 }

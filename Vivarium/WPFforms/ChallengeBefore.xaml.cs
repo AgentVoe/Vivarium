@@ -40,5 +40,12 @@ namespace Vivarium
                 textBox.Text = new string(textBox.Text.Where(ch => Char.IsDigit(ch)).ToArray());
             }
         }
+
+        private void Statistics_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Statistics statistics = new Statistics();
+            statistics.Show();
+            this.Close();
+        }
     }
 }

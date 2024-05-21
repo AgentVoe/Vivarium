@@ -135,5 +135,28 @@ namespace Vivarium.WPFforms
             //    public string Title { get; set; }
             //    public Brush ColorBrush { get; set; }
         }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ChallengeBefore challengeBefore = new ChallengeBefore();
+            challengeBefore.Show();
+            this.Close();
+        }
+
+        private void Challenge_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            bool challenge = false; //проверить есть ли challenge для user
+            if (challenge)
+            {
+                ChallengeAfter challengeForm = new ChallengeAfter();
+                challengeForm.Show();
+            }
+            else
+            {
+                ChallengeBefore challengeForm = new ChallengeBefore();
+                challengeForm.Show();
+            }
+            this.Close();
+        }
     }
 }

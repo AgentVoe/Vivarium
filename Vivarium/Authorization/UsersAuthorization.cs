@@ -1,5 +1,3 @@
-﻿using System.Security.Cryptography;
-
 namespace Vivarium.Authorization
 {
 	public class UsersAuthorization
@@ -47,3 +45,4 @@ namespace Vivarium.Authorization
 		}
 	}
 }
+

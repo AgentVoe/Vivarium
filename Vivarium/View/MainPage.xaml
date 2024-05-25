@@ -19,27 +19,24 @@
             <Image HorizontalAlignment="Left" Height="50" Margin="177,25,0,0" VerticalAlignment="Top" Width="44" Source="/WPFforms/pics/лого.png"/>
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="Black" VerticalAlignment="Top" Width="112" Fill="Black" Margin="225,52,0,0"/>
             <TextBlock Margin="249,37,-24,0" Text="VIVARIUM" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-            <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
-            <TextBlock Margin="450,43,-191,0" Text="Главная" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+            <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13" />
+            <TextBlock Margin="450,43,-191,0" Text="Главная" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
             <TextBlock Margin="527,43,-191,0" Text="Мои книги" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
-            <TextBlock Margin="623,43,-191,0" Text="Книжный вызов" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+            <TextBlock Margin="623,43,-191,0" Text="Книжный вызов" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
             <TextBlock Margin="757,43,-191,0" Text="Профиль" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
             <TextBlock Margin="843,43,-191,0" Text="Статистика" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/поиск.png"/>
+            <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/View/pics/поиск.png"/>
             <TextBlock Margin="1032,43,-191,0" Text="Поиск" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Foreground="#FF5A472F"/>
         </Grid>
         <Grid>
-            <Rectangle HorizontalAlignment="Center" Width="1200" Fill="#FF9F806E" Height="570" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="0,110,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Мы поможем вам найти книгу по вкусу"/><LineBreak/></TextBlock>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,331,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,351,0,0" Text="Цитата дня: Книга - идеальный способ, чтобы игнорировать жизнь" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold"/>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,331,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Горячие новинки"/><LineBreak/></TextBlock>
-            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="320" Margin="1010,43,0,0" VerticalAlignment="Top" Width="220" Source="/book1.png"/>
-            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="320" Margin="1010,43,0,0" VerticalAlignment="Top" Width="220" Source="/book2.png"/>
+            <Rectangle HorizontalAlignment="Center" Width="1200" Fill="#FF9F806E" Height="320" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="0,110,0,0"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center" Width="666"><Run Text="Мы поможем вам найти книг"/><Run Language="ru-ru" Text="и"/><Run Text=" по вкусу"/><LineBreak/></TextBlock>
+            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,269,0,0"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold" Width="666"><Run Text="Цитата дня: &quot;Книга - идеальный способ, чтобы игнорировать "/><Run Text="жизнь"/><Run Text="&quot;"/></TextBlock>
+            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Горячие новинки"/><LineBreak/></TextBlock>
+            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
         </Grid>
     </Grid>
 </Window>

@@ -21,7 +21,7 @@ namespace Vivarium.View
     {
         public MyBooks()
         {
-			InitializeComponent();
-		}
+            InitializeComponent();
+        }
     }
 }

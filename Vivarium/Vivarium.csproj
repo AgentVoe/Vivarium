@@ -1,11 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="лого.png" />
+    <None Remove="мозг.png" />
+    <None Remove="поиск.png" />
+    <None Remove="рука.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
@@ -16,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Folder Include="View\pics\" />
   </ItemGroup>
 
@@ -23,6 +32,15 @@
     <Compile Update="View\MyBooks.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="WPFforms\pics\лого.png" />
+    <Resource Include="WPFforms\pics\мозг.png" />
+    <Resource Include="WPFforms\pics\поиск.png" />
+    <Resource Include="WPFforms\pics\рука.png" />
+
   </ItemGroup>
 
 </Project>

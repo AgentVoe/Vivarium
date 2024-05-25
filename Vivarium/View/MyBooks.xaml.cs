@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace Vivarium.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainPageBefore.xaml
+    /// Логика взаимодействия для MyBooks.xaml
     /// </summary>
-    public partial class MainPageBefore : Window
+    public partial class MyBooks : Window
     {
-        public MainPageBefore()
+        public MyBooks()
         {
-            InitializeComponent();
-        }
+			InitializeComponent();
+		}
     }
 }

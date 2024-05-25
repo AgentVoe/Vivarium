@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,13 +16,13 @@ using System.Windows.Shapes;
 namespace Vivarium.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainPageBefore.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class MainPageBefore : Window
+    public partial class MainPage : Window
     {
-        public MainPageBefore()
+        public MainPage()
         {
-            InitializeComponent();
-        }
+			InitializeComponent();
+		}
     }
 }

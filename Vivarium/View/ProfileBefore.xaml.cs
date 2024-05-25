@@ -15,13 +15,23 @@ using System.Windows.Shapes;
 namespace Vivarium.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для ProfileBefore.xaml
     /// </summary>
-    public partial class MainPage : Window
+    public partial class ProfileBefore : Window
     {
-        public MainPage()
+        public ProfileBefore()
         {
             InitializeComponent();
+        }
+
+        private void EnterButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RegButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

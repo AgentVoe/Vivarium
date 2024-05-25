@@ -1,4 +1,4 @@
-﻿ ﻿<Window x:Class="Vivarium.MainPageBefore"
+﻿<Window x:Class="Vivarium.View.MyBooks"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,25 +21,23 @@
             <TextBlock Margin="249,37,-24,0" Text="VIVARIUM" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
             <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
             <TextBlock Margin="450,43,-191,0" Text="Главная" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
-            <TextBlock Margin="527,43,-191,0" Text="Мои книги" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
-            <TextBlock Margin="623,43,-191,0" Text="Книжный вызов" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+            <TextBlock Margin="527,43,-191,0" Text="Мои книги" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+            <TextBlock Margin="623,43,-191,0" Text="Книжный вызов" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
             <TextBlock Margin="757,43,-191,0" Text="Профиль" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
             <TextBlock Margin="843,43,-191,0" Text="Статистика" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/поиск.png"/>
+            <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/View/pics/поиск.png"/>
             <TextBlock Margin="1032,43,-191,0" Text="Поиск" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Foreground="#FF5A472F"/>
         </Grid>
         <Grid>
-            <Rectangle HorizontalAlignment="Center" Width="1200" Fill="#FF9F806E" Height="570" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="0,110,0,0"/>
+            <Rectangle HorizontalAlignment="Center" Width="1200" Fill="#FF9F806E" Height="320" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="0,110,0,0"/>
             <TextBlock HorizontalAlignment="Center" Margin="0,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Ваша библиотека"/><LineBreak/></TextBlock>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,331,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,351,0,0" Text="Цитата дня: Книга - идеальный способ, чтобы игнорировать жизнь" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold"/>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,331,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Любимые книги"/><LineBreak/></TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,291,0,0" Text="Цитата дня: Книга - идеальный способ, чтобы игнорировать жизнь" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold"/>
+            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,270,0,0"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Любимые книги"/><LineBreak/></TextBlock>
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="320" Margin="1010,43,0,0" VerticalAlignment="Top" Width="220" Source="/book1.png"/>
-            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="320" Margin="1010,43,0,0" VerticalAlignment="Top" Width="220" Source="/book2.png"/>
+            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
+            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
         </Grid>
     </Grid>
 </Window>

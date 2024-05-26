@@ -38,6 +38,29 @@
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
+            <!--<ListBox ItemsSource="{Binding BookVMs}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"
+                                IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <View:BookView />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>-->
+            <!--<ItemsControl ItemsSource="{Binding}">
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type sys:String}">
+                        <TextBlock Text="{Binding StringFormat='String {0}'}"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type sys:Int32}">
+                        <TextBlock Text="{Binding StringFormat='Int {0}'}"/>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+            </ItemsControl>-->
         </Grid>
     </Grid>
 </Window>

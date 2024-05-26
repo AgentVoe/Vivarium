@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -23,124 +26,93 @@ namespace Vivarium.WPFforms
         public Statistics()
         {
             InitializeComponent();
-
-            //        double pieWidth = 650;
-            //        double pieHeight = 650;
-            //        double centerX = pieWidth / 2;
-            //        double centerY = pieHeight / 2;
-            //        double radius = pieWidth / 2;
-            //        FavoriteGenres.Width = pieWidth;
-            //        FavoriteGenres.Height = pieHeight;
-
-            //        var Categories = new List<Category>()
-            //        {
-            //            new Category
-            //            {
-            //                Title = "Category#01",
-            //                Percentage = 10,
-            //                ColorBrush = Brushes.Gold,
-            //            },
-
-            //            new Category
-            //            {
-            //                Title = "Category#02",
-            //                Percentage = 30,
-            //                ColorBrush = Brushes.Pink,
-            //            },
-
-            //            new Category
-            //            {
-            //                Title = "Category#03",
-            //                Percentage = 60,
-            //                ColorBrush = Brushes.CadetBlue,
-            //            }
-            //        };
-
-
-            //        float angle = 0, prevAngle = 0;
-            //        foreach (var category in Categories)
-            //        {
-            //            double line1X = (radius * Math.Cos(angle * Math.PI / 180)) + centerX;
-            //            double line1Y = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
-
-            //            angle = category.Percentage * (float)360 / 100 + prevAngle;
-            //            Debug.WriteLine(angle);
-
-            //            double arcX = (radius * Math.Cos(angle * Math.PI / 180)) + centerX;
-            //            double arcY = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
-
-            //            var line1Segment = new LineSegment(new Point(line1X, line1Y), false);
-            //            double arcWidth = radius, arcHeight = radius;
-            //            bool isLargeArc = category.Percentage > 50;
-            //            var arcSegment = new ArcSegment()
-            //            {
-            //                Size = new Size(arcWidth, arcHeight),
-            //                Point = new Point(arcX, arcY),
-            //                SweepDirection = SweepDirection.Clockwise,
-            //                IsLargeArc = isLargeArc,
-            //            };
-            //            var line2Segment = new LineSegment(new Point(centerX, centerY), false);
-
-            //            var pathFigure = new PathFigure(
-            //                new Point(centerX, centerY),
-            //                new List<PathSegment>()
-            //                {
-            //                    line1Segment,
-            //                    arcSegment,
-            //                    line2Segment,
-            //                },
-            //                true);
-
-            //            var pathFigures = new List<PathFigure>() { pathFigure, };
-            //            var pathGeometry = new PathGeometry(pathFigures);
-            //            var path = new Path()
-            //            {
-            //                Fill = category.ColorBrush,
-            //                Data = pathGeometry,
-            //            };
-            //            FavoriteGenres.Children.Add(path);
-
-            //            prevAngle = angle;
-
-
-            //            // draw outlines
-            //            var outline1 = new Line()
-            //            {
-            //                X1 = centerX,
-            //                Y1 = centerY,
-            //                X2 = line1Segment.Point.X,
-            //                Y2 = line1Segment.Point.Y,
-            //                Stroke = Brushes.White,
-            //                StrokeThickness = 5,
-            //            };
-            //            var outline2 = new Line()
-            //            {
-            //                X1 = centerX,
-            //                Y1 = centerY,
-            //                X2 = arcSegment.Point.X,
-            //                Y2 = arcSegment.Point.Y,
-            //                Stroke = Brushes.White,
-            //                StrokeThickness = 5,
-            //            };
-
-            //            FavoriteGenres.Children.Add(outline1);
-            //            FavoriteGenres.Children.Add(outline2);
-            //        }
-            //    }
-            //}
-
-            //public class Category
-            //{
-            //    public float Percentage { get; set; }
-            //    public string Title { get; set; }
-            //    public Brush ColorBrush { get; set; }
+            Pie();
+            PieGenerateGenres();
+            PieGenerateAuthors();
+            PieGenerateYears();
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        public Func<ChartPoint, string> PointLabel { get; set; }
+        public SeriesCollection SeriesGenres { get; set; }
+        public SeriesCollection SeriesAuthors { get; set; }
+        public SeriesCollection SeriesYears { get; set; }
+        public string[] Labels { get; set; }
+        public Func<int, string> Values { get; set; }
+
+        public void Pie()
         {
-            ChallengeBefore challengeBefore = new ChallengeBefore();
-            challengeBefore.Show();
-            this.Close();
+            PointLabel = chartPoint => string.Format("{0}, {1:P}", chartPoint.Y, chartPoint.Participation);
+            DataContext = this;
+        }
+
+        public void PieGenerateGenres()
+        {
+            Dictionary<string, int> genresValue = new Dictionary<string, int>() // получить названия жанров прочитанных книг и количество
+            {
+                {"Романы", 12},
+                {"Фантастика", 22},
+                {"Детективы", 12},
+                {"Ужасы", 12},
+                {"Комедии", 7}
+            };
+            SeriesGenres = new SeriesCollection();
+            AddSeries(SeriesGenres, genresValue, GenresResult);
+            DataContext = this;
+        }
+
+        public void PieGenerateAuthors()
+        {
+            Dictionary<string, int> authorsValue = new Dictionary<string, int>() // получить фамилии авторов прочитанных книг и количество
+            {
+                {"Пушкин", 12},
+                {"Тургенев", 22},
+                {"Лермонтов", 12},
+                {"Гоголь", 12},
+                {"Толстой", 7}
+            };
+            SeriesAuthors = new SeriesCollection();
+            AddSeries(SeriesAuthors, authorsValue, AuthorsResult);
+            DataContext = this;
+        }
+
+        public void AddSeries(SeriesCollection series, Dictionary<string, int> dictionary, TextBlock resultText)
+        {
+            int result = 0;
+            foreach (var item in dictionary)
+            {
+                series.Add(new PieSeries
+                {
+                    Title = item.Key,
+                    Values = new ChartValues<ObservableValue> { new ObservableValue(item.Value) },
+                    DataLabels = true
+                });
+                result += item.Value;
+            }
+            resultText.Text = result.ToString();
+        }
+
+        public void PieGenerateYears()
+        {
+            Dictionary<string, int> yearValue = new Dictionary<string, int>() // получить количество прочитанных книг по годам
+            {
+                {"2020", 4},
+                {"2021", 4},
+                {"2022", 7},
+                {"2023", 7},
+                {"2024", 1}
+            };
+            SeriesYears = new SeriesCollection()
+            {
+                new ColumnSeries
+                {
+                    Title = "книг прочитано",
+                    Values = new ChartValues<int>(yearValue.Values),
+                    Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(62,145,60))               
+                }
+            };
+            Labels = yearValue.Keys.ToArray();
+            Values = value => value.ToString("N");
+            DataContext = this;
         }
 
         private void Challenge_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

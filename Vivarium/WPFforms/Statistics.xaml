@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:LiveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:Vivarium.WPFforms"
         mc:Ignorable="d"
         Title="" Height="1270" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
@@ -31,7 +32,7 @@
                         Мои книги
                     </Hyperlink>
                 </TextBlock>
-                <TextBlock Margin="623,43,0,0" FontSize="12" FontWeight="Bold" Width="107" HorizontalAlignment="Left">
+                <TextBlock Margin="623,43,0,0" FontSize="12" Width="107" HorizontalAlignment="Left">
                     <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ChallengeBefore.xaml" RequestNavigate="Challenge_RequestNavigate">
                        Книжный вызов
                     </Hyperlink>
@@ -56,27 +57,38 @@
             <Grid>
                 <Rectangle HorizontalAlignment="Left" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="50,586,0,0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="80,610,0,0" Text="Любимые жанры" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-                <!--<Canvas x:Name="FavoriteGenres" Margin="80,640,0,0"/>
-                <ItemsControl x:Name="detailsItemsControl">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate DataType="{x:Type local:Category}">
-                            <StackPanel Orientation="Horizontal" Margin="10">
-                                <Rectangle Width="20" Height="20" Fill="{Binding ColorBrush}" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Title}" FontSize="20" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Percentage}" Foreground="{Binding ColorBrush}" FontSize="20" Margin="20,0,0,0" VerticalAlignment="Center"/>
-                                <TextBlock Text="%" Foreground="{Binding ColorBrush}" FontSize="20" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>-->
+                <LiveCharts:PieChart x:Name="FavoriteGenres" Series="{Binding SeriesGenres}" LegendLocation="Right" InnerRadius="50" Margin="0,674,770,412">
+                    <LiveCharts:PieChart.ChartLegend>
+                        <LiveCharts:DefaultLegend BulletSize="20"></LiveCharts:DefaultLegend>
+                    </LiveCharts:PieChart.ChartLegend>
+                </LiveCharts:PieChart>
+                <TextBlock x:Name="GenresResult" Margin="161,756,1035,0" Text="50" FontSize="16" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Top" />
             </Grid>
             <Grid>
                 <Rectangle HorizontalAlignment="Right" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,586,50,0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="690,610,0,0" Text="Любимые писатели" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <LiveCharts:PieChart x:Name="FavoriteAuthors" Series="{Binding SeriesAuthors}" LegendLocation="Right" InnerRadius="50" Margin="610,674,160,412">
+                    <LiveCharts:PieChart.ChartLegend>
+                        <LiveCharts:DefaultLegend BulletSize="20"></LiveCharts:DefaultLegend>
+                    </LiveCharts:PieChart.ChartLegend>
+                </LiveCharts:PieChart>
+                <TextBlock x:Name="AuthorsResult" Margin="771,756,425,0" Text="50" FontSize="16" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Top" />
             </Grid>
             <Grid>
                 <Rectangle HorizontalAlignment="Left" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="50,918,0,0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="80,942,0,0" Text="Количество прочитанных книг по годам" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <LiveCharts:CartesianChart Series ="{Binding SeriesYears}" LegendLocation="Top" Margin="80,1004,690,82">
+                    <LiveCharts:CartesianChart.AxisX>
+                        <LiveCharts:Axis Labels="{Binding Labels}">
+                            <LiveCharts:Axis.Separator>
+                                <LiveCharts:Separator Step="1"/>
+                            </LiveCharts:Axis.Separator>
+                        </LiveCharts:Axis>
+                    </LiveCharts:CartesianChart.AxisX>
+                    <LiveCharts:CartesianChart.AxisY>
+                        <LiveCharts:Axis Labels="{Binding Values}"></LiveCharts:Axis>
+                    </LiveCharts:CartesianChart.AxisY>
+                </LiveCharts:CartesianChart>
             </Grid>
             <Grid>
                 <Rectangle HorizontalAlignment="Right" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,918,50,0"/>

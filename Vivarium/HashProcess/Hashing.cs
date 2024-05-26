@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vivarium.Authorization
+namespace Vivarium.HashProcess
 {
     public class Hashing
     {
@@ -14,7 +14,7 @@ namespace Vivarium.Authorization
         {
             this.password = password;
         }
-        private string HashPassword()
+        public string HashPassword()
 		{
 			byte[] salt;
 			byte[] buffer2;

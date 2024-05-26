@@ -36,7 +36,8 @@ namespace Vivarium.View
             string login = LoginBox.Text;
             string password = PasswordBox.Text;
             var control = new Controller(login, password).TryToAuthorize();
-            if (control) MessageBox.Show("Авторизация прошла успешно!");
+            if (control)
+                MessageBox.Show("Авторизация прошла успешно!");
             else MessageBox.Show("Неверно введен пароль или логин!");
         }
     }

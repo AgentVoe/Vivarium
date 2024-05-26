@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.View;
 
 namespace Vivarium.WPFforms
 {
@@ -115,6 +116,20 @@ namespace Vivarium.WPFforms
             DataContext = this;
         }
 
+        private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            MainPage mainPageForm = new MainPage();
+            mainPageForm.Show();
+            this.Close();
+        }
+
+        private void MyBooks_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            MyBooks myBooksForm = new MyBooks();
+            myBooksForm.Show();
+            this.Close();
+        }
+
         private void Challenge_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             bool challenge = false; //проверить есть ли challenge для user
@@ -127,6 +142,22 @@ namespace Vivarium.WPFforms
             {
                 ChallengeBefore challengeForm = new ChallengeBefore();
                 challengeForm.Show();
+            }
+            this.Close();
+        }
+
+        private void Profile_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            bool profile = false; //проверить есть ли user
+            if (profile)
+            {
+                ProfileAfter profileForm = new ProfileAfter();
+                profileForm.Show();
+            }
+            else
+            {
+                ProfileBefore profileForm = new ProfileBefore();
+                profileForm.Show();
             }
             this.Close();
         }

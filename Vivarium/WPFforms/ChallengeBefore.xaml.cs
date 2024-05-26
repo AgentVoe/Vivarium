@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.View;
 using Vivarium.WPFforms;
 
 namespace Vivarium
@@ -39,6 +40,36 @@ namespace Vivarium
             {
                 textBox.Text = new string(textBox.Text.Where(ch => Char.IsDigit(ch)).ToArray());
             }
+        }
+
+        private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            MainPage mainPageForm = new MainPage();
+            mainPageForm.Show();
+            this.Close();
+        }
+
+        private void MyBooks_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            MyBooks myBooksForm = new MyBooks();
+            myBooksForm.Show();
+            this.Close();
+        }
+
+        private void Profile_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            bool profile = false; //проверить есть ли user
+            if (profile)
+            {
+                ProfileAfter profileForm = new ProfileAfter();
+                profileForm.Show();
+            }
+            else
+            {
+                ProfileBefore profileForm = new ProfileBefore();
+                profileForm.Show();
+            }
+            this.Close();
         }
 
         private void Statistics_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

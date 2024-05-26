@@ -11,8 +11,5 @@
         <TextBox x:Name="PasswordBox" Background="Transparent" Opacity="0.5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="152" Margin="0,167,0,0" TextChanged="PasswordBox_TextChanged"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="55" Width="304"><Run Text="Укажите логин"/><Run Language="ru-ru" Text=", "/><Run Text="придумайте пароль, а также заполните данные для регистрации, позже "/><Run Text="их можно будет поменять в личном кабинете"/><Run Text=":"/></TextBlock>
         <Button x:Name="RegButton" Content="Регистрация" HorizontalAlignment="Center" Margin="0,282,0,0" VerticalAlignment="Top" Width="84" Click="RegButton_Click" Height="26" Background="#FFF4EEEE"/>
-        <TextBox x:Name="NameBox" Background="Transparent" Opacity="0.5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="ФИО" VerticalAlignment="Top" Width="152" Margin="0,204,0,0" TextChanged="NameBox_TextChanged"/>
-        <TextBox x:Name="PhoneBox" Background="Transparent" Opacity="0.5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Телефон" VerticalAlignment="Top" Width="152" Margin="0,243,0,0" TextChanged="PhoneBox_TextChanged"/>
-
     </Grid>
 </Window>

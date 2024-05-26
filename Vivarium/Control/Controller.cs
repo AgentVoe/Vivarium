@@ -24,9 +24,11 @@ namespace Vivarium.Control
 			if (authorize) return true;
 			return false;
 		}
-		//public bool TryToSignUp()
-		//{
-		//	var signUp = new SignUp(login, password).Registration();
-		//}
+		public bool TryToSignUp()
+		{
+			var signUp = new SignUp(login, password).Registration();
+			if (signUp) return true;
+			return false;
+		}
 	}
 }

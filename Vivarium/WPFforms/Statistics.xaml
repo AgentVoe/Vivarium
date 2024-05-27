@@ -98,16 +98,16 @@
                 <Rectangle HorizontalAlignment="Right" Width="197" Fill="#FFD5D7D9" Height="89" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,1099,377,0"/>
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="750,980,0,0" VerticalAlignment="Top" Width="52" Fill="#FF3E913C"/>
                 <TextBlock HorizontalAlignment="Left" Margin="815,985,0,0" Text="ПРОЧИТАНО" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Margin="815,998,0,0" Text="23" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <TextBlock x:Name="DoneBooks" HorizontalAlignment="Left" Margin="815,998,0,0" Text="23" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="750,1120,0,0" VerticalAlignment="Top" Width="52" Fill="#FFF46D5A"/>
                 <TextBlock HorizontalAlignment="Left" Margin="815,1125,0,0" Text="ПЕРЕСТАЛ ЧИТАТЬ" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Margin="815,1138,0,0" Text="5" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <TextBlock x:Name="StopBooks" HorizontalAlignment="Left" Margin="815,1138,0,0" Text="5" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="1011,981,0,0" VerticalAlignment="Top" Width="52" Fill="White"/>
                 <TextBlock HorizontalAlignment="Left" Margin="1076,985,0,0" Text="ХОЧУ ПРОЧИТАТЬ" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Margin="1076,998,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <TextBlock x:Name="FutureBooks" HorizontalAlignment="Left" Margin="1076,998,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="1011,1120,0,0" VerticalAlignment="Top" Width="52" Fill="#FFFACC15"/>
                 <TextBlock HorizontalAlignment="Left" Margin="1076,1125,0,0" Text="ЧИТАЮ" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Margin="1076,1138,0,0" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <TextBlock x:Name="InProgressBooks" HorizontalAlignment="Left" Margin="1076,1138,0,0" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
             </Grid>
         </Grid>
     </ScrollViewer>

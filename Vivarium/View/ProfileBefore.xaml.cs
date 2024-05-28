@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.Authorization;
 using Vivarium.WPFforms;
 
 namespace Vivarium.View
@@ -29,11 +30,10 @@ namespace Vivarium.View
         {
             ProfileLogin profileLogin = new ProfileLogin();
             profileLogin.ShowDialog();
-            bool login = true; // проверить, авторизован ли пользователь 
-            if (login) 
+            if (Logged.IsLoggedIn) 
             {
-                ProfileAfter profileAfter = new ProfileAfter();
-                profileAfter.ShowDialog();
+                ProfileAfter profileAfter = new ProfileAfter(profileLogin.Login);
+                profileAfter.Show();
                 this.Close();
             }
         }

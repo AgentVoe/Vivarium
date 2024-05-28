@@ -20,9 +20,14 @@ namespace Vivarium.View
     /// </summary>
     public partial class MyBooks : Window
     {
+        private bool logged;
         public MyBooks()
         {
             InitializeComponent();
+        }
+        public MyBooks(bool logged)
+        {
+            this.logged = logged;
         }
 
         private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

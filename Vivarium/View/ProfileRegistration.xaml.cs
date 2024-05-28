@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.Authorization;
 using Vivarium.Control;
 
 namespace Vivarium.View
@@ -30,17 +31,25 @@ namespace Vivarium.View
             string login = LoginBox.Text;
             string password = PasswordBox.Text;
 
-            var controller = new Controller(login, password).TryToSignUp();
-            if (controller) MessageBox.Show("Вы были успешно зарегестрированы!");
-            else MessageBox.Show("Произошла ошибка!");
+            var registered = new Controller(login, password).TryToSignUp();
+            if (registered)
+            {
+                Logged.IsLoggedIn = true;
+                MessageBox.Show("Вы были успешно зарегистрированы!");
+            }
+            else
+            {
+                Logged.IsLoggedIn = false;
+                MessageBox.Show("Произошла ошибка!");
+            }
         }
 
-        //private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-            
-        //}
+            //private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+            //{
 
-        private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
+            //}
+
+            private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 	                
 		}

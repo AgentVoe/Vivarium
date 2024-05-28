@@ -15,7 +15,6 @@ namespace Vivarium.Authorization
 		}
 		public bool CheckPassword()
 		{
-			//var hashedPassword = new Hashing(password).HashPassword();
 			string userPasswordInDB;
 			using (VivariumContext db = new VivariumContext())
 			{

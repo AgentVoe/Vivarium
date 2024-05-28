@@ -20,10 +20,16 @@ namespace Vivarium.View
     /// </summary>
     public partial class ProfileAfter : Window
     {
+        private string login;
         public ProfileAfter()
         {
             InitializeComponent();
         }
+        public ProfileAfter(string login)
+        {
+            this.login = login;
+			InitializeComponent();
+		}
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +53,7 @@ namespace Vivarium.View
 
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            NameBox.Text = login;
         }
 
         private void ExtraBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -62,7 +68,7 @@ namespace Vivarium.View
 
         private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            MainPage mainPageForm = new MainPage();
+            MainPage mainPageForm = new MainPage(login);
             mainPageForm.Show();
             this.Close();
         }

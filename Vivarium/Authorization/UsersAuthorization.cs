@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace Vivarium.Authorization
 {
 	public class UsersAuthorization
@@ -23,11 +25,8 @@ namespace Vivarium.Authorization
 			{
 				return false;
 			}
-			if (password == null)
-			{
-				throw new ArgumentNullException("password");
-			}
-			byte[] src = Convert.FromBase64String(hashedPassword);
+            ArgumentNullException.ThrowIfNull(password);
+            byte[] src = Convert.FromBase64String(hashedPassword);
 			if ((src.Length != 0x31) || (src[0] != 0))
 			{
 				return false;

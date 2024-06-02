@@ -38,6 +38,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
-        Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE">
+        Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" ResizeMode="NoResize">
 
 </Window>

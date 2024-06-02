@@ -5,54 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
-        Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
-    <Grid Background="#FFF4EEEE" Height="700" Width="1300">
-        <Grid>
-            <Rectangle Height="80" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1200">
-                <Rectangle.Fill>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FFD3AC96"/>
-                        <GradientStop Color="#FF6D594E" Offset="0.993"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
-            <Image HorizontalAlignment="Left" Height="50" Margin="177,25,0,0" VerticalAlignment="Top" Width="44" Source="/WPFforms/pics/лого.png"/>
-            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="Black" VerticalAlignment="Top" Width="112" Fill="Black" Margin="225,52,0,0"/>
-            <TextBlock Margin="249,37,-24,0" Text="VIVARIUM" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
-            <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13" />
-            <TextBlock Margin="450,43,-191,0" Text="Главная" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
-            <TextBlock Margin="527,43,0,0" FontSize="12" Width="68" HorizontalAlignment="Left">
-    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/MyBooks.xaml" RequestNavigate="MyBooks_RequestNavigate">
-        Мои книги
-    </Hyperlink>
-            </TextBlock>
-            <TextBlock Margin="623,43,0,0" FontSize="12" Width="107" HorizontalAlignment="Left">
+        Title="" Height="auto"  Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
+    <ScrollViewer>
+        <Grid Background="#FFF4EEEE" Height="886" Width="1300">
+            <Grid>
+                <Rectangle Height="80" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1200">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFD3AC96"/>
+                            <GradientStop Color="#FF6D594E" Offset="0.993"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image HorizontalAlignment="Left" Height="50" Margin="177,25,0,0" VerticalAlignment="Top" Width="44" Source="/WPFforms/pics/лого.png"/>
+                <Rectangle HorizontalAlignment="Left" Height="1" Stroke="Black" VerticalAlignment="Top" Width="112" Fill="Black" Margin="225,52,0,0"/>
+                <TextBlock Margin="249,37,-24,0" Text="VIVARIUM" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13" />
+                <TextBlock Margin="450,43,-191,0" Text="Главная" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
+                <TextBlock Margin="527,43,0,0" FontSize="12" Width="68" HorizontalAlignment="Left">
+                <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/MyBooks.xaml" RequestNavigate="MyBooks_RequestNavigate">
+                    Мои книги
+                </Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="623,43,0,0" FontSize="12" Width="107" HorizontalAlignment="Left">
                 <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ChallengeBefore.xaml" RequestNavigate="Challenge_RequestNavigate">
                    Книжный вызов
                 </Hyperlink>
-            </TextBlock>
-            <TextBlock Margin="757,43,0,0" FontSize="12" Width="58" HorizontalAlignment="Left">
+                </TextBlock>
+                <TextBlock Margin="757,43,0,0" FontSize="12" Width="58" HorizontalAlignment="Left">
                 <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ProfileBefore.xaml" RequestNavigate="Profile_RequestNavigate">
                     Профиль
                 </Hyperlink>
-            </TextBlock>
-            <TextBlock Margin="843,43,0,0" FontSize="12" Width="70" HorizontalAlignment="Left">
+                </TextBlock>
+                <TextBlock Margin="843,43,0,0" FontSize="12" Width="70" HorizontalAlignment="Left">
                 <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/Statistics.xaml" RequestNavigate="Statistics_RequestNavigate">
                     Статистика
                 </Hyperlink>
-            </TextBlock>
-            <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
-            <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/View/pics/поиск.png"/>
-            <TextBlock Margin="1032,43,-191,0" Text="Поиск" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Foreground="#FF5A472F"/>
+                </TextBlock>
+                <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
+                <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/View/pics/поиск.png"/>
+                <TextBlock Margin="1032,43,-191,0" Text="Поиск" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Foreground="#FF5A472F"/>
+            </Grid>
+            <Grid>
+                <Rectangle HorizontalAlignment="Center" Width="1200" Fill="#FF9F806E" Height="320" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="0,110,0,0"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center" Width="666"><Run Text="Мы поможем вам найти книг"/><Run Language="ru-ru" Text="и"/><Run Text=" по вкусу"/><LineBreak/></TextBlock>
+                <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,269,0,0"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold" Width="666"><Run Text="Цитата дня: &quot;Книга - идеальный способ, чтобы игнорировать "/><Run Text="жизнь"/><Run Text="&quot;"/></TextBlock>
+                <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Горячие новинки"/><LineBreak/></TextBlock>
+                <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
+            </Grid>
+            <DataGrid x:Name="books" HorizontalAlignment="Center" Margin="0,537,0,29" Width="1200" Height="320" FontSize="25" FontWeight="Bold" 
+                      AutoGenerateColumns="False" RowBackground="#FFD3AC96" AlternatingRowBackground="#FFF7DFD0" RowHeight="40"
+                      CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly='True' Background="#FFF7DFD0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название книги" Width="590" Binding="{Binding Path=Title}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Background" Value="#FF9F806E"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Автор" Width="300" Binding="{Binding Path=Author.Surname}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Background" Value="#FF9F806E"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Жанр" Width="300" Binding="{Binding Path=BooksGenres[0].Genre.GenreName}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="Background" Value="#FF9F806E"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+                <DataGrid.ItemContainerStyle>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>
+            </DataGrid>
         </Grid>
-        <Grid>
-            <Rectangle HorizontalAlignment="Center" Width="1200" Fill="#FF9F806E" Height="320" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="0,110,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center" Width="666"><Run Text="Мы поможем вам найти книг"/><Run Language="ru-ru" Text="и"/><Run Text=" по вкусу"/><LineBreak/></TextBlock>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,269,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold" Width="666"><Run Text="Цитата дня: &quot;Книга - идеальный способ, чтобы игнорировать "/><Run Text="жизнь"/><Run Text="&quot;"/></TextBlock>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
-            <TextBlock HorizontalAlignment="Center" Margin="0,460,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="45" TextAlignment="Center"><Run Text="Горячие новинки"/><LineBreak/></TextBlock>
-            <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
-        </Grid>
-    </Grid>
+    </ScrollViewer>
 </Window>

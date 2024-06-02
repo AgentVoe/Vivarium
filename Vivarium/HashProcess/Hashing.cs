@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography;
 
-namespace Vivarium.Authorization
+namespace Vivarium.HashProcess
 {
-    public class Hashing
+	public class Hashing
     {
 		private string password;
         public Hashing(string password)
         {
             this.password = password;
         }
-        private string HashPassword()
+        public string HashPassword()
 		{
 			byte[] salt;
 			byte[] buffer2;

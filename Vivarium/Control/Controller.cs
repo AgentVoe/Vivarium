@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vivarium.Authorization;
+﻿using Vivarium.Authorization;
 using Vivarium.Registration;
 
 namespace Vivarium.Control
@@ -17,16 +12,30 @@ namespace Vivarium.Control
 			this.login = login;
 			this.password = password;
 		}
+        public Controller()
+        {
+            
+        }
 
-		public bool TryToAuthorize()
+        public bool TryToAuthorize()
 		{
 			var authorize = new UsersAuthorization(login, password).CheckPassword();
-			if (authorize) return true;
+			if (authorize)
+			{
+				var loader = new DataLoader(login);
+				return true;
+			}	
 			return false;
 		}
-		//public bool TryToSignUp()
-		//{
-		//	var signUp = new SignUp(login, password).Registration();
-		//}
+		public bool TryToSignUp()
+		{
+			var signUp = new SignUp(login, password).Registration();
+			if (signUp) return true;
+			return false;
+		}
+		public void TryToLoadData()
+		{
+			new DataLoader();
+		}
 	}
 }

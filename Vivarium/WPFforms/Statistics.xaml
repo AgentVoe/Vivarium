@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:LiveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:Vivarium.WPFforms"
         mc:Ignorable="d"
         Title="" Height="1270" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" ResizeMode="NoResize">
@@ -22,22 +23,26 @@
                 <TextBlock Margin="249,37,-24,0" Text="VIVARIUM" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
                 <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13"/>
                 <TextBlock Margin="450,43,0,0" FontSize="12" Width="50" HorizontalAlignment="Left">
-                    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="">
+                    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/MainPage.xaml" RequestNavigate="MainPage_RequestNavigate">
                         Главная
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="527,43,0,0" FontSize="12" Width="68" HorizontalAlignment="Left">
-                    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="">
+                    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/MyBooks.xaml" RequestNavigate="MyBooks_RequestNavigate">
                         Мои книги
                     </Hyperlink>
                 </TextBlock>
+<<<<<<< HEAD
                 <TextBlock Margin="623,43,0,0" FontSize="12" FontWeight="Regular" Width="107" HorizontalAlignment="Left">
+=======
+                <TextBlock Margin="623,43,0,0" FontSize="12" Width="107" HorizontalAlignment="Left">
+>>>>>>> master
                     <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ChallengeBefore.xaml" RequestNavigate="Challenge_RequestNavigate">
                        Книжный вызов
                     </Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="757,43,0,0" FontSize="12" Width="58" HorizontalAlignment="Left">
-                    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="">
+                    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ProfileBefore.xaml" RequestNavigate="Profile_RequestNavigate">
                         Профиль
                     </Hyperlink>
                 </TextBlock>
@@ -55,6 +60,7 @@
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="1000" Fill="Black" Margin="0,563,0,0"/>
             <Grid>
                 <Rectangle HorizontalAlignment="Left" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="50,586,0,0"/>
+<<<<<<< HEAD
                 <TextBlock HorizontalAlignment="Left" Margin="80,610,0,0" Text="Любимые жанры" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold"/>
                 <!--<Canvas x:Name="FavoriteGenres" Margin="80,640,0,0"/>
                 <ItemsControl x:Name="detailsItemsControl">
@@ -77,6 +83,41 @@
             <Grid>
                 <Rectangle HorizontalAlignment="Left" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="50,918,0,0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="80,942,0,0" Text="Количество прочитанных книг по годам" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="19" FontWeight="Bold"/>
+=======
+                <TextBlock HorizontalAlignment="Left" Margin="80,610,0,0" Text="Любимые жанры" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <LiveCharts:PieChart x:Name="FavoriteGenres" Series="{Binding SeriesGenres}" LegendLocation="Right" InnerRadius="50" Margin="0,674,770,412">
+                    <LiveCharts:PieChart.ChartLegend>
+                        <LiveCharts:DefaultLegend BulletSize="20"></LiveCharts:DefaultLegend>
+                    </LiveCharts:PieChart.ChartLegend>
+                </LiveCharts:PieChart>
+                <TextBlock x:Name="GenresResult" Margin="161,756,1035,0" Text="50" FontSize="16" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Top" />
+            </Grid>
+            <Grid>
+                <Rectangle HorizontalAlignment="Right" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,586,50,0"/>
+                <TextBlock HorizontalAlignment="Left" Margin="690,610,0,0" Text="Любимые писатели" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <LiveCharts:PieChart x:Name="FavoriteAuthors" Series="{Binding SeriesAuthors}" LegendLocation="Right" InnerRadius="50" Margin="610,674,160,412">
+                    <LiveCharts:PieChart.ChartLegend>
+                        <LiveCharts:DefaultLegend BulletSize="20"></LiveCharts:DefaultLegend>
+                    </LiveCharts:PieChart.ChartLegend>
+                </LiveCharts:PieChart>
+                <TextBlock x:Name="AuthorsResult" Margin="771,756,425,0" Text="50" FontSize="16" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Top" />
+            </Grid>
+            <Grid>
+                <Rectangle HorizontalAlignment="Left" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="10" RadiusY="10" Margin="50,918,0,0"/>
+                <TextBlock HorizontalAlignment="Left" Margin="80,942,0,0" Text="Количество прочитанных книг по годам" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <LiveCharts:CartesianChart Series ="{Binding SeriesYears}" LegendLocation="Top" Margin="80,1004,690,82">
+                    <LiveCharts:CartesianChart.AxisX>
+                        <LiveCharts:Axis Labels="{Binding Labels}">
+                            <LiveCharts:Axis.Separator>
+                                <LiveCharts:Separator Step="1"/>
+                            </LiveCharts:Axis.Separator>
+                        </LiveCharts:Axis>
+                    </LiveCharts:CartesianChart.AxisX>
+                    <LiveCharts:CartesianChart.AxisY>
+                        <LiveCharts:Axis Labels="{Binding Values}"></LiveCharts:Axis>
+                    </LiveCharts:CartesianChart.AxisY>
+                </LiveCharts:CartesianChart>
+>>>>>>> master
             </Grid>
             <Grid>
                 <Rectangle HorizontalAlignment="Right" Width="590" Fill="White" Height="312" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,918,50,0"/>
@@ -85,6 +126,7 @@
                 <Rectangle HorizontalAlignment="Right" Width="197" Fill="#FFD5D7D9" Height="89" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,1099,115,0"/>
                 <Rectangle HorizontalAlignment="Right" Width="197" Fill="#FFD5D7D9" Height="89" VerticalAlignment="Top" RadiusX="12" RadiusY="12" Margin="0,1099,377,0"/>
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="750,980,0,0" VerticalAlignment="Top" Width="52" Fill="#FF3E913C"/>
+<<<<<<< HEAD
                 <TextBlock HorizontalAlignment="Left" Margin="815,984,0,0" Text="ПРОЧИТАНО" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Left" Margin="815,998,0,0" Text="23" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="750,1120,0,0" VerticalAlignment="Top" Width="52" Fill="#FFF46D5A"/>
@@ -96,6 +138,19 @@
                 <Ellipse HorizontalAlignment="Left" Height="47" Margin="1011,1120,0,0" VerticalAlignment="Top" Width="52" Fill="#FFFACC15"/>
                 <TextBlock HorizontalAlignment="Left" Margin="1076,1125,0,0" Text="ЧИТАЮ" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Left" Margin="1076,1138,0,0" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+=======
+                <TextBlock HorizontalAlignment="Left" Margin="815,985,0,0" Text="ПРОЧИТАНО" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
+                <TextBlock x:Name="DoneBooks" HorizontalAlignment="Left" Margin="815,998,0,0" Text="23" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <Ellipse HorizontalAlignment="Left" Height="47" Margin="750,1120,0,0" VerticalAlignment="Top" Width="52" Fill="#FFF46D5A"/>
+                <TextBlock HorizontalAlignment="Left" Margin="815,1125,0,0" Text="ПЕРЕСТАЛ ЧИТАТЬ" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
+                <TextBlock x:Name="StopBooks" HorizontalAlignment="Left" Margin="815,1138,0,0" Text="5" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <Ellipse HorizontalAlignment="Left" Height="47" Margin="1011,981,0,0" VerticalAlignment="Top" Width="52" Fill="White"/>
+                <TextBlock HorizontalAlignment="Left" Margin="1076,985,0,0" Text="ХОЧУ ПРОЧИТАТЬ" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
+                <TextBlock x:Name="FutureBooks" HorizontalAlignment="Left" Margin="1076,998,0,0" Text="10" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+                <Ellipse HorizontalAlignment="Left" Height="47" Margin="1011,1120,0,0" VerticalAlignment="Top" Width="52" Fill="#FFFACC15"/>
+                <TextBlock HorizontalAlignment="Left" Margin="1076,1125,0,0" Text="ЧИТАЮ" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
+                <TextBlock x:Name="InProgressBooks" HorizontalAlignment="Left" Margin="1076,1138,0,0" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+>>>>>>> master
             </Grid>
         </Grid>
     </ScrollViewer>

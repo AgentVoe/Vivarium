@@ -1,5 +1,4 @@
-using System.Security.Cryptography;
-
+using Vivarium.Context;
 namespace Vivarium.Authorization
 {
 	public class UsersAuthorization
@@ -13,8 +12,14 @@ namespace Vivarium.Authorization
 		}
 		public bool CheckPassword()
 		{
-			//Сначала захэшировать пароль, потом проверяем
-			//if (VerifyHashedPassword(hashedPassword, password)) return true;
+			string userPasswordInDB;
+			using (VivariumDContext db = new VivariumDContext())
+			{
+				var user = db.Users.Where(userLogin => userLogin.Login == login).FirstOrDefault();
+				userPasswordInDB = user.Pass;
+			}
+
+			if (VerifyHashedPassword(userPasswordInDB, password)) return true;
 			return false;
 		}
 

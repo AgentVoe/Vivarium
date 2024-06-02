@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
+
         Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" ResizeMode="NoResize">
     <Grid Background="#FFF4EEEE" Height="700" Width="1300">
         <Grid>
@@ -21,10 +22,26 @@
             <TextBlock Margin="249,37,-24,0" Text="VIVARIUM" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
             <TextBlock Margin="231,55,-6,0" Text="книжный сервис" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="13" />
             <TextBlock Margin="450,43,-191,0" Text="Главная" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" FontWeight="Bold"/>
-            <TextBlock Margin="527,43,-191,0" Text="Мои книги" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
-            <TextBlock Margin="623,43,-191,0" Text="Книжный вызов" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
-            <TextBlock Margin="757,43,-191,0" Text="Профиль" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
-            <TextBlock Margin="843,43,-191,0" Text="Статистика" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12"/>
+            <TextBlock Margin="527,43,0,0" FontSize="12" Width="68" HorizontalAlignment="Left">
+    <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/MyBooks.xaml" RequestNavigate="MyBooks_RequestNavigate">
+        Мои книги
+    </Hyperlink>
+            </TextBlock>
+            <TextBlock Margin="623,43,0,0" FontSize="12" Width="107" HorizontalAlignment="Left">
+                <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ChallengeBefore.xaml" RequestNavigate="Challenge_RequestNavigate">
+                   Книжный вызов
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock Margin="757,43,0,0" FontSize="12" Width="58" HorizontalAlignment="Left">
+                <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/ProfileBefore.xaml" RequestNavigate="Profile_RequestNavigate">
+                    Профиль
+                </Hyperlink>
+            </TextBlock>
+            <TextBlock Margin="843,43,0,0" FontSize="12" Width="70" HorizontalAlignment="Left">
+                <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/Statistics.xaml" RequestNavigate="Statistics_RequestNavigate">
+                    Статистика
+                </Hyperlink>
+            </TextBlock>
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
             <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/View/pics/поиск.png"/>
             <TextBlock Margin="1032,43,-191,0" Text="Поиск" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="12" Foreground="#FF5A472F"/>

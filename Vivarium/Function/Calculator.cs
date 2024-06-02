@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vivarium.Calculation
+﻿namespace Vivarium.Calculation
 {
 
-    /// <summary>
-    /// Используется для вычислений 
-    /// </summary>
-    internal static class Calculator //надо ли
+	/// <summary>
+	/// Используется для вычислений 
+	/// </summary>
+	internal static class Calculator //надо ли
     {
        public static double? GetAverage(IEnumerable<int> values)
         {

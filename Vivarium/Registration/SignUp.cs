@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vivarium.Context;
 using Vivarium.HashProcess;
 
 namespace Vivarium.Registration
 {
-    class SignUp
+	class SignUp
     {
         private string login;
         private string password;
@@ -21,7 +16,7 @@ namespace Vivarium.Registration
         public bool Registration()
         {
             var hashedPassword = new Hashing(password).HashPassword();
-            using (VivariumContext db = new VivariumContext())
+            using (VivariumDContext db = new VivariumDContext())
             {
                 User user = new User
                 {

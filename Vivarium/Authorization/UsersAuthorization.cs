@@ -1,6 +1,5 @@
 using System.Security.Cryptography;
 using Vivarium.Context;
-using Vivarium.HashProcess;
 
 namespace Vivarium.Authorization
 {
@@ -15,9 +14,8 @@ namespace Vivarium.Authorization
 		}
 		public bool CheckPassword()
 		{
-			//var hashedPassword = new Hashing(password).HashPassword();
 			string userPasswordInDB;
-			using (VivariumContext db = new VivariumContext())
+			using (VivariumDContext db = new VivariumDContext())
 			{
 				var user = db.Users.Where(userLogin => userLogin.Login == login).FirstOrDefault();
 				userPasswordInDB = user.Pass;

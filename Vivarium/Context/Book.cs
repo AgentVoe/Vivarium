@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Vivarium.Context;
 
-namespace Vivarium.Context;
-
-/// <summary>
-/// Книгга
-/// </summary>
 public partial class Book
 {
     public int Id { get; set; }
 
     public string? Title { get; set; }
 
-    public DateOnly? BYear { get; set; }
-
-    public int? AuthorId { get; set; }
+    public string? BYear { get; set; }
 
     public virtual ICollection<Assessment> Assessments { get; set; } = new List<Assessment>();
-
-    public virtual Author? Author { get; set; }
 
     public virtual ICollection<BooksAuthor> BooksAuthors { get; set; } = new List<BooksAuthor>();
 

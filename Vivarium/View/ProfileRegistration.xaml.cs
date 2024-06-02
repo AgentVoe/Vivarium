@@ -1,67 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Vivarium.Authorization;
 using Vivarium.Control;
 
 namespace Vivarium.View
 {
-    /// <summary>
-    /// Логика взаимодействия для ProfileRegistration.xaml
-    /// </summary>
-    public partial class ProfileRegistration : Window
-    {
-        public ProfileRegistration()
-        {
-            InitializeComponent();
-        }
-
-        private void RegButton_Click(object sender, RoutedEventArgs e)
-        {
-            string login = LoginBox.Text;
-            string password = PasswordBox.Text;
-
-            var registered = new Controller(login, password).TryToSignUp();
-            if (registered)
-            {
-                Logged.IsLoggedIn = true;
-                MessageBox.Show("Вы были успешно зарегистрированы!");
-            }
-            else
-            {
-                Logged.IsLoggedIn = false;
-                MessageBox.Show("Произошла ошибка!");
-            }
-        }
-
-            //private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
-            //{
-
-            //}
-
-            private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-	                
+	/// <summary>
+	/// Логика взаимодействия для ProfileRegistration.xaml
+	/// </summary>
+	public partial class ProfileRegistration : Window
+	{
+		private string login;
+		private string password;
+		public ProfileRegistration()
+		{
+			InitializeComponent();
 		}
 
-        private void PasswordBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
+		private void RegButton_Click(object sender, RoutedEventArgs e)
+		{
+			login = LoginBox.Text;
+			password = PasswordBox.Text;
 
-        }
+			var registered = new Controller(login, password).TryToSignUp();
+			if (registered)
+			{
+				Logged.IsLoggedIn = true;
+				var loader = new DataLoader(login);
+				MessageBox.Show("Вы были успешно зарегистрированы!");
+			}
+			else
+			{
+				Logged.IsLoggedIn = false;
+				MessageBox.Show("Произошла ошибка!");
+			}
+		}
 
-        //private void PhoneBox_TextChanged(object sender, TextChangedEventArgs e)
-        //{
+		//private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
+		//{
 
-        //}
-    }
+		//}
+
+		private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		private void PasswordBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		//private void PhoneBox_TextChanged(object sender, TextChangedEventArgs e)
+		//{
+
+		//}
+	}
 }

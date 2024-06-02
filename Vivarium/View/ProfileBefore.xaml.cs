@@ -32,7 +32,7 @@ namespace Vivarium.View
             profileLogin.ShowDialog();
             if (Logged.IsLoggedIn) 
             {
-                ProfileAfter profileAfter = new ProfileAfter(profileLogin.Login);
+                ProfileAfter profileAfter = new ProfileAfter();
                 profileAfter.Show();
                 this.Close();
             }
@@ -42,6 +42,12 @@ namespace Vivarium.View
         {
             ProfileRegistration profileRegistration = new ProfileRegistration();
             profileRegistration.Show();
+            if (Logged.IsLoggedIn)
+            {
+				ProfileAfter profileAfter = new ProfileAfter();
+				profileAfter.Show();
+				this.Close();
+			}
         }
 
         private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

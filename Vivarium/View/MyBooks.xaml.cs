@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.Authorization;
 using Vivarium.WPFforms;
 
 namespace Vivarium.View
@@ -20,15 +21,15 @@ namespace Vivarium.View
     /// </summary>
     public partial class MyBooks : Window
     {
-        private bool logged;
+        //private bool logged;
         public MyBooks()
         {
             InitializeComponent();
         }
-        public MyBooks(bool logged)
-        {
-            this.logged = logged;
-        }
+        //public MyBooks(bool logged)
+        //{
+        //    this.logged = logged;
+        //}
 
         private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
@@ -55,9 +56,8 @@ namespace Vivarium.View
 
         private void Profile_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            bool profile = false; //проверить есть ли user
-            if (profile)
-            {
+			if (Logged.IsLoggedIn)
+			{
                 ProfileAfter profileForm = new ProfileAfter();
                 profileForm.Show();
             }

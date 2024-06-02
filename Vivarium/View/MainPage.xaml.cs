@@ -1,37 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using Vivarium.Authorization;
 using Vivarium.WPFforms;
+using Vivarium.Control;
+using Vivarium.StaticData;
 
 namespace Vivarium.View
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
-    public partial class MainPage : Window
+	/// <summary>
+	/// Логика взаимодействия для MainPage.xaml
+	/// </summary>
+	public partial class MainPage : Window
     {
-        private string login;
+        //private string login;
         public MainPage()
         {
             InitializeComponent();
+            if (!Logged.IsLoggedIn)
+            {
+                new Controller().TryToLoadData();
+            }
         }
-        public MainPage(string login)
-        {
-			InitializeComponent();
-            this.login = login;
-		}
+  //      public MainPage(string login)
+  //      {
+		//	InitializeComponent();
+  //          this.login = login;
+		//}
 
         private void Statistics_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
@@ -66,7 +59,7 @@ namespace Vivarium.View
         {
             if (Logged.IsLoggedIn)
             {
-                ProfileAfter profileForm = new ProfileAfter(login);
+                ProfileAfter profileForm = new ProfileAfter();
                 profileForm.Show();
             }
             else

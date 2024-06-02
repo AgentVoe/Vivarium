@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Vivarium.Context;
 
-public partial class VivariumContext : DbContext
+public partial class VivariumDContext : DbContext
 {
-    public VivariumContext()
+    public VivariumDContext()
     {
     }
 
-    public VivariumContext(DbContextOptions<VivariumContext> options)
+    public VivariumDContext(DbContextOptions<VivariumDContext> options)
         : base(options)
     {
     }
@@ -39,7 +37,7 @@ public partial class VivariumContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Vivarium;Username=postgres;Password=admin");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=VivariumD;Username=postgres;Password=admin");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -74,12 +72,9 @@ public partial class VivariumContext : DbContext
             entity.ToTable("authors");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Fname)
-                .HasMaxLength(40)
-                .HasColumnName("fname");
-            entity.Property(e => e.Surname)
-                .HasMaxLength(40)
-                .HasColumnName("surname");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .HasColumnName("name");
         });
 
         modelBuilder.Entity<Book>(entity =>
@@ -89,15 +84,12 @@ public partial class VivariumContext : DbContext
             entity.ToTable("books");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.AuthorId).HasColumnName("author_id");
-            entity.Property(e => e.BYear).HasColumnName("b_year");
-            entity.Property(e => e.Title)
+            entity.Property(e => e.BYear)
                 .HasMaxLength(100)
+                .HasColumnName("b_year");
+            entity.Property(e => e.Title)
+                .HasMaxLength(1000)
                 .HasColumnName("title");
-
-            entity.HasOne(d => d.Author).WithMany(p => p.Books)
-                .HasForeignKey(d => d.AuthorId)
-                .HasConstraintName("books_author_id_fkey");
         });
 
         modelBuilder.Entity<BooksAuthor>(entity =>
@@ -163,7 +155,7 @@ public partial class VivariumContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.GenreName)
-                .HasMaxLength(30)
+                .HasMaxLength(100)
                 .HasColumnName("genre_name");
         });
 

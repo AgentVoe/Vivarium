@@ -74,7 +74,7 @@ namespace Vivarium.WPFforms
         {
             Statistics statistics = new Statistics();
             statistics.Show();
-            this.Close();
+            Close();
         }
     }
 }

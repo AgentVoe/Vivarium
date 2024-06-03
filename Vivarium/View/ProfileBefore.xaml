@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
         Title="" Height="1100" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
+    <ScrollViewer>
     <Grid Background="#FFF4EEEE" Height="1100" Width="1300">
         <Grid>
             <Rectangle Height="80" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1200">
@@ -73,4 +74,5 @@
         <Button x:Name="EnterButton" Height="30" Content="Войти" Click="EnterButton_Click" Margin="738,641,432,429" Background="#FF9F806E" FontWeight="Bold" />
         <Button x:Name="RegButton" Height="30" Content="Зарегистрироваться" Click="RegButton_Click" Margin="931,641,239,429" Background="#FF9F806E" FontWeight="Bold" />
     </Grid>
+    </ScrollViewer>
 </Window>

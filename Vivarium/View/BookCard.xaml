@@ -13,7 +13,7 @@
         <TextBlock x:Name="genre" HorizontalAlignment="Left" Margin="35,170,0,0" Text="Жанр: " VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="year" HorizontalAlignment="Left" Margin="35,210,0,0" Text="Год издания: " VerticalAlignment="Top" FontSize="20"/>
         <TextBlock x:Name="rating" HorizontalAlignment="Left" Margin="35,250,0,0" Text="Рейтинг: " VerticalAlignment="Top" FontSize="20"/>
-        <TextBlock x:Name="grade1" HorizontalAlignment="Left" Margin="130,282,0,0" Text="★" VerticalAlignment="Top" FontSize="50" MouseDown="Grade1_MouseDown"/>
+        <TextBlock x:Name="grade1" HorizontalAlignment="Left" Margin="130,282,0,0" Text="☆" VerticalAlignment="Top" FontSize="50" MouseDown="Grade1_MouseDown"/>
         <TextBlock x:Name="grade2" HorizontalAlignment="Left" Margin="180,282,0,0" Text="☆" VerticalAlignment="Top" FontSize="50" MouseDown="Grade2_MouseDown"/>
         <TextBlock x:Name="grade3" HorizontalAlignment="Left" Margin="230,282,0,0" Text="☆" VerticalAlignment="Top" FontSize="50" MouseDown="Grade3_MouseDown"/>
         <TextBlock x:Name="grade4" HorizontalAlignment="Left" Margin="280,282,0,0" Text="☆" VerticalAlignment="Top" FontSize="50" MouseDown="Grade4_MouseDown"/>

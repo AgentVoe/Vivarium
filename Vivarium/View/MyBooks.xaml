@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
-        Title="" Height="700" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
-    <Grid Background="#FFF4EEEE" Height="700" Width="1300">
+        Title="" Height="auto" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
+    <ScrollViewer>
+    <Grid Background="#FFF4EEEE" Height="886" Width="1300">
         <Grid>
             <Rectangle Height="80" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1200">
                 <Rectangle.Fill>
@@ -55,5 +56,41 @@
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
         </Grid>
+        <DataGrid x:Name="books" HorizontalAlignment="Center" Margin="0,537,0,29" Width="1200" Height="320" FontSize="25" FontWeight="Bold" 
+          AutoGenerateColumns="False" RowBackground="#FFD3AC96" AlternatingRowBackground="#FFF7DFD0" RowHeight="40"
+          CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly='True' Background="#FFF7DFD0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название книги" Width="590" Binding="{Binding Path=Title}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#FF9F806E"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Автор" Width="300" Binding="{Binding Path=Author.Surname}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#FF9F806E"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Жанр" Width="300" Binding="{Binding Path=BooksGenres[0].Genre.GenreName}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="#FF9F806E"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+        </DataGrid>
     </Grid>
+    </ScrollViewer>
 </Window>

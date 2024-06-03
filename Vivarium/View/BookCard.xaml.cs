@@ -39,6 +39,28 @@ namespace Vivarium.View
                 grades.Add(item.Grade.Grade1);
             rating.Text += grades.Average();
 
+            grade = 0; //получить assessment для book от user (если есть)
+            switch (grade)
+            {
+                case 1:
+                    MakeGrade1();
+                    break;
+                case 2:
+                    MakeGrade2();
+                    break;
+                case 3:
+                    MakeGrade3();
+                    break;
+                case 4:
+                    MakeGrade4();
+                    break;
+                case 5:
+                    MakeGrade5();
+                    break;
+                default: 
+                    break;
+            }
+
             List<Status> statuses = new List<Status> // получить список статусов
             {
                 new Status{Status1 = "не читал"},
@@ -49,12 +71,18 @@ namespace Vivarium.View
             };
 
             status.ItemsSource = statuses;
-            status.SelectedIndex = 0;
+
+            status.SelectedIndex = 0; // получить statusBook для book от user (если есть)
         }
 
         private int grade;
 
         private void Grade1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MakeGrade1();
+        }
+
+        private void MakeGrade1()
         {
             grade1.Text = "★";
             grade2.Text = "☆";
@@ -66,6 +94,11 @@ namespace Vivarium.View
 
         private void Grade2_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            MakeGrade2();
+        }
+
+        private void MakeGrade2()
+        {
             grade1.Text = "★";
             grade2.Text = "★";
             grade3.Text = "☆";
@@ -76,6 +109,11 @@ namespace Vivarium.View
 
         private void Grade3_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            MakeGrade3();
+        }
+
+        private void MakeGrade3()
+        {
             grade1.Text = "★";
             grade2.Text = "★";
             grade3.Text = "★";
@@ -83,7 +121,13 @@ namespace Vivarium.View
             grade5.Text = "☆";
             grade = 3;
         }
+
         private void Grade4_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MakeGrade4();
+        }
+
+        private void MakeGrade4()
         {
             grade1.Text = "★";
             grade2.Text = "★";
@@ -95,9 +139,14 @@ namespace Vivarium.View
 
         private void Grade5_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            MakeGrade5();
+        }
+
+        private void MakeGrade5()
+        {
             grade1.Text = "★";
             grade2.Text = "★";
-            grade3.Text = "★"; 
+            grade3.Text = "★";
             grade4.Text = "★";
             grade5.Text = "★";
             grade = 5;

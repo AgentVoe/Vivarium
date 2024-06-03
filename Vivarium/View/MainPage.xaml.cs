@@ -1,4 +1,18 @@
-﻿using System.Windows;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using Vivarium.Context;
 using Vivarium.Authorization;
 using Vivarium.WPFforms;
 using Vivarium.Control;
@@ -15,6 +29,31 @@ namespace Vivarium.View
         public MainPage()
         {
             InitializeComponent();
+
+
+            // получить книги --
+            Author author = new Author { Surname = "Пушкин" };
+            List<BooksGenre> genres = new List<BooksGenre> { new BooksGenre { Genre = new Genre { GenreName = "Фантастика" } } };
+            List<Assessment> assessments = new List<Assessment> { new Assessment { Grade = new Grade { Grade1 = 4 } }, new Assessment { Grade = new Grade { Grade1 = 5 } } };
+            List<Book> getBooks = new List<Book>
+            {
+                new Book{Id = 0, BYear = new DateOnly(), Title = "Преступление и наказание", Author = author, BooksGenres = genres, Assessments = assessments},
+                new Book{Id = 1, Title = "Война и мир", Author = author, BooksGenres = genres},
+                new Book{Id = 2, Title = "Вы найдете это в библиотеке", Author = author, BooksGenres = genres},
+                new Book{Id = 3, Title = "Что такое счастье", Author = author, BooksGenres = genres},
+                new Book{Id = 4, Title = "Грозовой перевал", Author = author, BooksGenres = genres}
+            };
+            // -- получить книги
+
+            books.ItemsSource = getBooks;
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Book book = (Book)books.SelectedItem;
+            BookCard bookCard = new BookCard(book);
+            bookCard.Show();
+
             if (!Logged.IsLoggedIn)
             {
                 new Controller().TryToLoadData();

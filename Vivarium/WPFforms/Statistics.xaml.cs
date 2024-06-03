@@ -33,17 +33,17 @@ namespace Vivarium.WPFforms
             PieGenerateAuthors();
             PieGenerateYears();
 
-            int doneBooks = 23; // получить количество книг статуса "прочитано" для User
-            DoneBooks.Text = doneBooks.ToString();
+            //int doneBooks = 23; // получить количество книг статуса "прочитано" для User
+            //DoneBooks.Text = doneBooks.ToString();
 
-            int stopBooks = 5; // получить количество статуса "перестал читать" для User
-            StopBooks.Text = stopBooks.ToString();
+            //int stopBooks = 5; // получить количество статуса "перестал читать" для User
+            //StopBooks.Text = stopBooks.ToString();
 
-            int futureBooks = 10; // получить количество книг статуса "хочу прочитать" для User
-            FutureBooks.Text = futureBooks.ToString();
+            //int futureBooks = 10; // получить количество книг статуса "хочу прочитать" для User
+            //FutureBooks.Text = futureBooks.ToString();
 
-            int inProgressBooks = 3; // получить количество книг статуса "читаю" для User
-            InProgressBooks.Text = inProgressBooks.ToString();
+            //int inProgressBooks = 3; // получить количество книг статуса "читаю" для User
+            //InProgressBooks.Text = inProgressBooks.ToString();
         }
 
         public Func<ChartPoint, string> PointLabel { get; set; }

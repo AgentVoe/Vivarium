@@ -31,21 +31,21 @@ namespace Vivarium.View
             InitializeComponent();
 
 
-            // получить книги --
-            Author author = new Author { Surname = "Пушкин" };
-            List<BooksGenre> genres = new List<BooksGenre> { new BooksGenre { Genre = new Genre { GenreName = "Фантастика" } } };
-            List<Assessment> assessments = new List<Assessment> { new Assessment { Grade = new Grade { Grade1 = 4 } }, new Assessment { Grade = new Grade { Grade1 = 5 } } };
-            List<Book> getBooks = new List<Book>
-            {
-                new Book{Id = 0, BYear = new DateOnly(), Title = "Преступление и наказание", Author = author, BooksGenres = genres, Assessments = assessments},
-                new Book{Id = 1, Title = "Война и мир", Author = author, BooksGenres = genres},
-                new Book{Id = 2, Title = "Вы найдете это в библиотеке", Author = author, BooksGenres = genres},
-                new Book{Id = 3, Title = "Что такое счастье", Author = author, BooksGenres = genres},
-                new Book{Id = 4, Title = "Грозовой перевал", Author = author, BooksGenres = genres}
-            };
-            // -- получить книги
+            //// получить книги --
+            //Author author = new Author { Surname = "Пушкин" };
+            //List<BooksGenre> genres = new List<BooksGenre> { new BooksGenre { Genre = new Genre { GenreName = "Фантастика" } } };
+            //List<Assessment> assessments = new List<Assessment> { new Assessment { Grade = new Grade { Grade1 = 4 } }, new Assessment { Grade = new Grade { Grade1 = 5 } } };
+            //List<Book> getBooks = new List<Book>
+            //{
+            //    new Book{Id = 0, BYear = new DateOnly(), Title = "Преступление и наказание", Author = author, BooksGenres = genres, Assessments = assessments},
+            //    new Book{Id = 1, Title = "Война и мир", Author = author, BooksGenres = genres},
+            //    new Book{Id = 2, Title = "Вы найдете это в библиотеке", Author = author, BooksGenres = genres},
+            //    new Book{Id = 3, Title = "Что такое счастье", Author = author, BooksGenres = genres},
+            //    new Book{Id = 4, Title = "Грозовой перевал", Author = author, BooksGenres = genres}
+            //};
+            //// -- получить книги
 
-            books.ItemsSource = getBooks;
+            //books.ItemsSource = getBooks;
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)

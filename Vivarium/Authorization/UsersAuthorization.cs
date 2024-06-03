@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Vivarium.Context;
 namespace Vivarium.Authorization
 {

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
 
-        Title="" Height="auto" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
+        Title="" Height="auto" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized" ResizeMode="NoResize">
     <ScrollViewer>
     <Grid Background="#FFF4EEEE" Height="886" Width="1300">
         <Grid>

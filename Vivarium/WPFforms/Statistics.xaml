@@ -6,7 +6,7 @@
         xmlns:LiveCharts="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:local="clr-namespace:Vivarium.WPFforms"
         mc:Ignorable="d"
-        Title="" Height="1270" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" ResizeMode="NoResize">
+        Title="" Height="1270" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" ResizeMode="NoResize" WindowState="Maximized">
     <ScrollViewer>
         <Grid Background="#FFF4EEEE" Height="1270" Width="1300">
             <Grid>

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Vivarium.Context;
 
-namespace Vivarium.Context;
-
-/// <summary>
-/// Книга и ее статус
-/// </summary>
 public partial class StatusBook
 {
     public int Id { get; set; }

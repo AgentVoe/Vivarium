@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Vivarium.Context;
 
-namespace Vivarium.Context;
-
-/// <summary>
-/// Книга и ее жанр
-/// </summary>
 public partial class BooksGenre
 {
     public int Id { get; set; }

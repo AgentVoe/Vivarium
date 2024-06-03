@@ -26,12 +26,17 @@ namespace Vivarium
             InitializeComponent();
         }
 
+        private int PlanBooks;
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //содать Challenge c CountBooks.Text в Plan для UserId 
-            ChallengeAfter challengeAfter = new ChallengeAfter();
-            challengeAfter.Show();
-            this.Close();
+            //создать Challenge c CountBooks.Text в Plan для UserId
+            if (PlanBooks != 0)
+            {
+                ChallengeAfter challengeAfter = new ChallengeAfter();
+                challengeAfter.Show();
+                Close();
+            }     
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -39,7 +44,10 @@ namespace Vivarium
             if (sender is TextBox textBox)
             {
                 textBox.Text = new string(textBox.Text.Where(ch => Char.IsDigit(ch)).ToArray());
+                var planCountBooks = Convert.ToInt32(textBox.Text);
+                PlanBooks = planCountBooks;
             }
+
         }
 
         private void MainPage_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
@@ -76,7 +84,7 @@ namespace Vivarium
         {
             Statistics statistics = new Statistics();
             statistics.Show();
-            this.Close();
+            Close();
         }
     }
 }

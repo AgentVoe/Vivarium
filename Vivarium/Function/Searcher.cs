@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vivarium.Context;
-
+﻿using Vivarium.Context;
 namespace Vivarium.Function
 {
-    internal static class Searcher
+	internal static class Searcher
     {
         public static List<object> filters;
 

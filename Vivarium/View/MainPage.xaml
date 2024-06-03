@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
+         
         Title="" Height="auto"  Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
     <ScrollViewer>
         <Grid Background="#FFF4EEEE" Height="886" Width="1300">
@@ -41,6 +42,7 @@
                 <Hyperlink Foreground="Black" TextDecorations="{x:Null}" NavigateUri="/WPFforms/Statistics.xaml" RequestNavigate="Statistics_RequestNavigate">
                     Статистика
                 </Hyperlink>
+
                 </TextBlock>
                 <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
                 <Image HorizontalAlignment="Left" Height="14" Margin="1010,43,0,0" VerticalAlignment="Top" Width="14" Source="/View/pics/поиск.png"/>

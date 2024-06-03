@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.Authorization;
 using Vivarium.Control;
 
 namespace Vivarium.View
@@ -21,6 +22,8 @@ namespace Vivarium.View
     /// </summary>
     public partial class ProfileLogin : Window
     {
+        private string login;
+        public string Login { get; set; }
         public ProfileLogin()
         {
             InitializeComponent();
@@ -34,11 +37,20 @@ namespace Vivarium.View
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
             string login = LoginBox.Text;
+            Login = login;
             string password = PasswordBox.Text;
-            var control = new Controller(login, password).TryToAuthorize();
-            if (control)
+            var authorized = new Controller(login, password).TryToAuthorize();
+            if (authorized)
+            {
+                Logged.IsLoggedIn = true;
                 MessageBox.Show("Авторизация прошла успешно!");
-            else MessageBox.Show("Неверно введен пароль или логин!");
+                Close();
+            }
+            else
+            {
+                Logged.IsLoggedIn = false;
+                MessageBox.Show("Неверно введен пароль или логин!");
+			}
         }
     }
 }

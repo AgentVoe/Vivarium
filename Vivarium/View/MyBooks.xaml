@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium"
         mc:Ignorable="d"
+
         Title="" Height="auto" Width="1300" FontFamily="Monospac821 BT" Background="#FFF4EEEE" WindowState="Maximized">
     <ScrollViewer>
     <Grid Background="#FFF4EEEE" Height="886" Width="1300">
@@ -55,6 +56,29 @@
             <Rectangle HorizontalAlignment="Left" Height="1" Stroke="#FF5A472F" VerticalAlignment="Top" Width="200" Margin="1010,60,0,0"/>
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="900" Fill="Black" Margin="0,448,0,0"/>
             <Rectangle HorizontalAlignment="Center" Height="3" Stroke="Black" VerticalAlignment="Top" Width="56" Fill="Black" Margin="0,520,0,0"/>
+            <!--<ListBox ItemsSource="{Binding BookVMs}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"
+                                IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <View:BookView />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>-->
+            <!--<ItemsControl ItemsSource="{Binding}">
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type sys:String}">
+                        <TextBlock Text="{Binding StringFormat='String {0}'}"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type sys:Int32}">
+                        <TextBlock Text="{Binding StringFormat='Int {0}'}"/>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+            </ItemsControl>-->
         </Grid>
         <DataGrid x:Name="books" HorizontalAlignment="Center" Margin="0,537,0,29" Width="1200" Height="320" FontSize="25" FontWeight="Bold" 
           AutoGenerateColumns="False" RowBackground="#FFD3AC96" AlternatingRowBackground="#FFF7DFD0" RowHeight="40"

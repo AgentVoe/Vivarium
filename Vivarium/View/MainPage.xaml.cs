@@ -13,19 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Vivarium.Context;
+using Vivarium.Authorization;
 using Vivarium.WPFforms;
+using Vivarium.Control;
+using Vivarium.StaticData;
 
 namespace Vivarium.View
 {
-    /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
-    /// </summary>
-    public partial class MainPage : Window
+	/// <summary>
+	/// Логика взаимодействия для MainPage.xaml
+	/// </summary>
+	public partial class MainPage : Window
     {
+        //private string login;
         public MainPage()
-
         {
             InitializeComponent();
+
 
             // получить книги --
             Author author = new Author { Surname = "Пушкин" };
@@ -49,7 +53,17 @@ namespace Vivarium.View
             Book book = (Book)books.SelectedItem;
             BookCard bookCard = new BookCard(book);
             bookCard.Show();
+
+            if (!Logged.IsLoggedIn)
+            {
+                new Controller().TryToLoadData();
+            }
         }
+  //      public MainPage(string login)
+  //      {
+		//	InitializeComponent();
+  //          this.login = login;
+		//}
 
         private void Statistics_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
@@ -82,8 +96,7 @@ namespace Vivarium.View
 
         private void Profile_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            bool profile = false; //проверить есть ли user
-            if (profile)
+            if (Logged.IsLoggedIn)
             {
                 ProfileAfter profileForm = new ProfileAfter();
                 profileForm.Show();

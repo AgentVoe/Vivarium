@@ -4,6 +4,6 @@ namespace Vivarium.StaticData
 {
 	public static class UserAndBooks
 	{
-		public static User userAndBooks;
+		public static List<User> userAndBooks;
 	}
 }

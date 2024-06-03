@@ -27,36 +27,34 @@ namespace Vivarium
 		{
 			using (VivariumDContext db = new VivariumDContext())
 			{
-
-				AuthorsAndBooks.authorsAndBooks = db.BooksAuthors
-					.OrderBy(a => a.Id)
-					.Take(10)
-					.Select(ba => new BooksAuthor()
+				Books.books = db.Books
+				.OrderBy(ba => ba.Id)
+				.Take(10)
+				.Select(ba => new Book
+				{
+					Id = ba.Id,
+					Title = ba.Title,
+					BooksAuthors = ba.BooksAuthors.Select(a => new BooksAuthor
 					{
-						Id = ba.Id,
-						AuthorId = ba.AuthorId,
+						Id = a.Id,
 						Author = new Author()
 						{
-							Id = ba.Author.Id,
-							Name = ba.Author.Name
-						},
-						BookId = ba.BookId,
-						Book = new Book()
-						{
-							Id = ba.Book.Id,
-							Title = ba.Book.Title,
-							BYear = ba.Book.BYear,
-							BooksGenres = ba.Book.BooksGenres.Select(genre => new BooksGenre()
-							{
-								Id = genre.Id,
-								Genre = new Genre()
-								{
-									Id = genre.Genre.Id,
-									GenreName = genre.Genre.GenreName
-								}
-							}).ToList()
+							Id = a.Id,
+							Name = a.Author.Name
 						}
-					}).ToList();
+					}).ToList(),
+					BYear = ba.BYear,
+					BooksGenres = ba.BooksGenres.Select(bg => new BooksGenre()
+					{
+						Id = bg.Id,
+						Genre = new Genre()
+						{
+							Id = bg.Genre.Id,
+							GenreName = bg.Genre.GenreName
+						}
+					}).ToList(),
+				})
+				.ToList();
 			}
 		}
 		/*
@@ -83,7 +81,7 @@ namespace Vivarium
 						{
 							Id = ub.Book.Id,
 							Title = ub.Book.Title,
-							BYear= ub.Book.BYear,
+							BYear = ub.Book.BYear,
 							BooksGenres = ub.Book.BooksGenres.Select(genre => new BooksGenre()
 							{
 								Id = genre.Id,
@@ -101,7 +99,7 @@ namespace Vivarium
 						}
 					}).ToList()
 				})
-				.FirstOrDefault();
+				.ToList();
 			}
 		}
 		#endregion

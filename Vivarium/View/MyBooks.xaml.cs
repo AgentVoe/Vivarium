@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Vivarium.Context;
 using Vivarium.Authorization;
 using Vivarium.WPFforms;
+using Vivarium.StaticData;
 
 namespace Vivarium.View
 {
@@ -41,7 +42,7 @@ namespace Vivarium.View
             //};
             //// -- получить книги пользователя
 
-            //books.ItemsSource = getBooks;
+            books.ItemsSource = UserAndBooks.userAndBooks;
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)

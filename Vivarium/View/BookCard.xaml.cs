@@ -24,9 +24,9 @@ namespace Vivarium.View
         {
             InitializeComponent();
 
-            //name.Text = book.Title;
-            //author.Text = book.Author.Surname;
-            //year.Text += book.BYear.Value.Year;
+            name.Text = book.Title;
+            author.Text = book.BooksAuthors.First().Author.Name;
+            year.Text += book.BYear;
 
             string genres = "";
             foreach (var item in book.BooksGenres)

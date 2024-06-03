@@ -84,7 +84,7 @@
           AutoGenerateColumns="False" RowBackground="#FFD3AC96" AlternatingRowBackground="#FFF7DFD0" RowHeight="40"
           CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" IsReadOnly='True' Background="#FFF7DFD0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название книги" Width="590" Binding="{Binding Path=Title}">
+                <DataGridTextColumn Header="Название книги" Width="590" Binding="{Binding Path=StatusBooks[0].Book.Title}">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>

@@ -55,7 +55,7 @@ namespace Vivarium.View
 
         private void NameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            NameBox.Text = UserAndBooks.userAndBooks.Login;
+            NameBox.Text = UserAndBooks.userAndBooks[0].Login;
         }
 
         private void ExtraBox_TextChanged(object sender, TextChangedEventArgs e)

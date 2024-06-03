@@ -38,6 +38,18 @@ namespace Vivarium.View
             foreach (var item in book.Assessments)
                 grades.Add(item.Grade.Grade1);
             rating.Text += grades.Average();
+
+            List<Status> statuses = new List<Status> // получить список статусов
+            {
+                new Status{Status1 = "не читал"},
+                new Status{Status1 = "хочу прочитать"},
+                new Status{Status1 = "прочитано"},
+                new Status{Status1 = "читаю"},
+                new Status{Status1 = "перестал читать"},
+            };
+
+            status.ItemsSource = statuses;
+            status.SelectedIndex = 0;
         }
 
         private int grade;
@@ -94,6 +106,11 @@ namespace Vivarium.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // сохранить grade для book от user
+        }
+
+        private void status_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // сохранить status.SelectedItem для book от user
         }
     }
 }

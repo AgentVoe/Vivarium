@@ -25,6 +25,6 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <ComboBox HorizontalAlignment="Center" Margin="0,410,0,0" VerticalAlignment="Top" Width="200" Height="30"/>
+        <ComboBox x:Name="status" HorizontalAlignment="Center" Margin="0,410,0,0" VerticalAlignment="Top" Width="200" Height="30" DisplayMemberPath="Status1" SelectionChanged="status_SelectionChanged"/>
     </Grid>
 </Window>

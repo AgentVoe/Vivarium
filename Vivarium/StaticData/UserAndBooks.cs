@@ -13,5 +13,10 @@ namespace Vivarium.StaticData
 				books.Add(statusBook.Book);
 			return books;
 		}
+
+		public static Status GetStatus(int bookId)
+		{
+			return userAndBooks[0].StatusBooks.Where(sb => sb.Book.Id == bookId).FirstOrDefault().Status;
+        }
 	}
 }

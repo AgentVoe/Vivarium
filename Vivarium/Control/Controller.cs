@@ -39,9 +39,13 @@ namespace Vivarium.Control
 		{
 			new DataLoader();
 		}
-		public void TryToAddBookToUser(StatusBook book)
+		public void TryToAddBookToUser(StatusBook book, Assessment ass)
 		{
-			UserAndBooks.AddBookToUser(book);
+			UserAndBooks.AddBookToUser(book, ass);
 		}
+		public void TryToUpdateBook(StatusBook book, Assessment ass)
+		{
+            UserAndBooks.UpdateBook(book, ass);
+        }
 	}
 }

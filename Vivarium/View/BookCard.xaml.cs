@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Vivarium.Context;
+using Vivarium.StaticData;
 
 namespace Vivarium.View
 {
@@ -57,22 +48,19 @@ namespace Vivarium.View
                 case 5:
                     MakeGrade5();
                     break;
-                default: 
+                default:
                     break;
             }
 
-            List<Status> statuses = new List<Status> // получить список статусов
-            {
-                new Status{Status1 = "не читал"},
-                new Status{Status1 = "хочу прочитать"},
-                new Status{Status1 = "прочитано"},
-                new Status{Status1 = "читаю"},
-                new Status{Status1 = "перестал читать"},
-            };
-
-            status.ItemsSource = statuses;
-
-            status.SelectedIndex = 0; // получить statusBook для book от user (если есть)
+            status.ItemsSource = Books.statuses;
+            Status statusBook = UserAndBooks.GetStatus(book.Id);
+            if (statusBook != null)
+                foreach (Status item in status.Items)
+                    if (item.Status1 == statusBook.Status1)
+                    { 
+                        status.SelectedItem = item;
+                        break;
+                    }
         }
 
         private int grade;

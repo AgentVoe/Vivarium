@@ -42,7 +42,7 @@ namespace Vivarium.View
             //};
             //// -- получить книги пользователя
 
-            books.ItemsSource = UserAndBooks.userAndBooks;
+            books.ItemsSource = UserAndBooks.GetBooks();
         }
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)

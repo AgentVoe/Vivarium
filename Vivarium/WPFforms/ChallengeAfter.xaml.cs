@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.StaticData;
 using Vivarium.View;
 
 namespace Vivarium.WPFforms
@@ -24,8 +25,9 @@ namespace Vivarium.WPFforms
         {
             InitializeComponent();
 
-            double fact = 5; // получить fact из Challenge для UserId
-            double plan = 10; // получить plan из Challenge для UserId
+            var challange = UserAndBooks.userAndBooks[0].Challenges.Last();
+            double fact = Convert.ToDouble(challange.Fact);
+            double plan = Convert.ToDouble(challange.Plan);
 
             TextResult.Text = $"Вы прочли {fact} из {plan} книг";
                         

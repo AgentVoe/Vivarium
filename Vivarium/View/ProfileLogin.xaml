@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vivarium.WPFforms"
         mc:Ignorable="d"
-        Title="Авторизация" Height="450" Width="800" ResizeMode="NoResize" WindowState="Maximized">
+        Title="Авторизация" Height="450" Width="800" ResizeMode="NoResize">
     <Grid Background="#FF9F806E">
         <TextBox x:Name="LoginBox" Background="Transparent" Opacity="0.5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="146" TextChanged="TextBox_TextChanged" Height="18" Margin="0,181,0,0"/>
         <TextBox x:Name="PasswordBox" Background="Transparent" Opacity="0.5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="146" Margin="0,213,0,0"/>

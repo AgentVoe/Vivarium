@@ -93,7 +93,6 @@ namespace Vivarium.View
                                 break;
                             }
                 }
-                status.SelectedIndex = 0;
             }
             else status.SelectedIndex = 0;
         }
@@ -275,6 +274,18 @@ namespace Vivarium.View
                     BookId = _book.Id,
                     GradeId = grade,
                 };
+
+                var newAssessment = new Assessment()
+                {
+                    BookId = _book.Id,
+                    GradeId = grade,
+                    Grade = new Grade()
+                    {
+                        Id = grade,
+                        Grade1 = grade
+                    }
+                };
+                UserAndBooks.userAndBooks[0].Assessments.Add(newAssessment);
                 UserAndBooks.userAndBooks[0].StatusBooks.Add(newStatusBook);
 
                 new Controller().TryToAddBookToUser(bookToUserId, userBookGrade);

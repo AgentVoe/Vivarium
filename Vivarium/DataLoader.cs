@@ -101,8 +101,20 @@ namespace Vivarium
 									Id = genre.Genre.Id,
 									GenreName = genre.Genre.GenreName
 								}
-							}).ToList()
-						},
+							}).ToList(),
+                            Assessments = ub.Book.Assessments.Select(a => new Assessment()
+                            {
+                                Id = a.Id,
+                                GradeId = a.Grade.Id,
+                                Grade = new Grade()
+                                {
+                                    Id = a.Grade.Id,
+                                    Grade1 = a.Grade.Grade1
+                                },
+                                UserId = ub.User.Id,
+                                BookId = ub.Book.Id,
+                            }).ToList()
+                        },
 						Status = new Status()
 						{
 							Id = ub.Status.Id,
@@ -119,8 +131,8 @@ namespace Vivarium
 							Grade1 = a.Grade.Grade1
 						},
 						UserId = a.User.Id,
-                        BookId = a.Book.Id,
-                    }).ToList()
+						BookId = a.Book.Id,
+					}).ToList()
 				})
 				.ToList();
 			}

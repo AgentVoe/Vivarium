@@ -45,9 +45,17 @@ namespace Vivarium.View
             rating.Text += grades.Average();
 
 
+            if (UserAndBooks.userAndBooks[0].StatusBooks.Any(b => b.BookId == _book.Id))
+            {
+                grade = UserAndBooks.userAndBooks[0].Assessments
+                .Where(b => b.BookId == _book.Id).FirstOrDefault().Grade.Grade1;
+                rating .Text += grade;
+            }
+            else
+            {
+                grade = 0;
+            }
 
-            grade = UserAndBooks.userAndBooks[0].Assessments
-                .Where(b => b.BookId == _book.Id).FirstOrDefault().Grade.Grade1; //получить assessment для book от user (если есть)
             switch (grade)
             {
                 case 1:
@@ -65,22 +73,23 @@ namespace Vivarium.View
                 case 5:
                     MakeGrade5();
                     break;
-                default: 
+                default:
                     break;
             }
 
-			status.ItemsSource = Books.statuses;
-            Status statusBook = UserAndBooks.GetStatus(book.Id);
-            if (statusBook != null)
-                foreach (Status item in status.Items)
-                    if (item.Status1 == statusBook.Status1)
-                    {
-                        status.SelectedItem = item;
-                        break;
-                    }
-
-
-           // status.SelectedIndex = 0; // получить statusBook для book от user (если есть)
+            status.ItemsSource = Books.statuses;
+            if (UserAndBooks.userAndBooks[0].StatusBooks.Any(b => b.BookId == _book.Id))
+            {
+                Status statusBook = UserAndBooks.GetStatus(book.Id);
+                if (statusBook != null)
+                    foreach (Status item in status.Items)
+                        if (item.Status1 == statusBook.Status1)
+                        {
+                            status.SelectedItem = item;
+                            break;
+                        }
+            }
+            else status.SelectedIndex = 0; 
         }
 
         private int grade;
@@ -162,7 +171,7 @@ namespace Vivarium.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var bookStatus =  status.Text;
+            var bookStatus = status.Text;
             int statusId = 0;
 
             if (bookStatus == "Хочу прочитать")
@@ -219,9 +228,13 @@ namespace Vivarium.View
                     {
                         new Assessment()
                         {
-                            Id = _book.Assessments.First().Id,
+                            Grade = new Grade()
+                            {
+                                Id = grade,
+                                Grade1 = grade,
+                            },                  
                             GradeId = grade,
-                        }                        
+                        }
                     }
                 },
                 UserId = UserAndBooks.userAndBooks[0].Id,
@@ -237,7 +250,7 @@ namespace Vivarium.View
                 },
                 StDate = DateOnly.Parse(DateTime.Now.ToShortDateString().ToString()),
 
-            }; 
+            };
 
             var bookToUserId = new StatusBook()
             {
@@ -256,8 +269,8 @@ namespace Vivarium.View
             UserAndBooks.userAndBooks[0].StatusBooks.Add(newStatusBook);
 
             new Controller().TryToAddBookToUser(bookToUserId);
-			
-		}
+
+        }
 
         private void status_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

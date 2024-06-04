@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -5,16 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+=======
+﻿using System.Windows;
+>>>>>>> ea0a6313eb26e11a0b3b79a00eb559ec5b9b0803
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
+<<<<<<< HEAD
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Vivarium.Authorization;
 using Vivarium.Context;
 using Vivarium.Control;
+=======
+using Vivarium.Context;
+>>>>>>> ea0a6313eb26e11a0b3b79a00eb559ec5b9b0803
 using Vivarium.StaticData;
 
 namespace Vivarium.View
@@ -78,6 +84,7 @@ namespace Vivarium.View
                 case 5:
                     MakeGrade5();
                     break;
+<<<<<<< HEAD
                 default:
                     break;
             }
@@ -99,6 +106,21 @@ namespace Vivarium.View
                 status.SelectedIndex = 0;
             }
             else status.SelectedIndex = 0;
+=======
+                default:
+                    break;
+            }
+
+            status.ItemsSource = Books.statuses;
+            Status statusBook = UserAndBooks.GetStatus(book.Id);
+            if (statusBook != null)
+                foreach (Status item in status.Items)
+                    if (item.Status1 == statusBook.Status1)
+                    { 
+                        status.SelectedItem = item;
+                        break;
+                    }
+>>>>>>> ea0a6313eb26e11a0b3b79a00eb559ec5b9b0803
         }
 
         private int grade;

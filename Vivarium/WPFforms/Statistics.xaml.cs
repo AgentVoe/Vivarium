@@ -1,21 +1,11 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Vivarium.View;
+using Vivarium.StaticData;
 
 namespace Vivarium.WPFforms
 {
@@ -33,17 +23,17 @@ namespace Vivarium.WPFforms
             PieGenerateAuthors();
             PieGenerateYears();
 
-            //int doneBooks = 23; // получить количество книг статуса "прочитано" для User
-            //DoneBooks.Text = doneBooks.ToString();
+            int doneBooks = UserAndBooks.GetCountDoneBook();
+            DoneBooks.Text = doneBooks.ToString();
 
-            //int stopBooks = 5; // получить количество статуса "перестал читать" для User
-            //StopBooks.Text = stopBooks.ToString();
+            int stopBooks = UserAndBooks.GetCountStopBook(); 
+            StopBooks.Text = stopBooks.ToString();
 
-            //int futureBooks = 10; // получить количество книг статуса "хочу прочитать" для User
-            //FutureBooks.Text = futureBooks.ToString();
+            int futureBooks = UserAndBooks.GetCountFutureBook();
+            FutureBooks.Text = futureBooks.ToString();
 
-            //int inProgressBooks = 3; // получить количество книг статуса "читаю" для User
-            //InProgressBooks.Text = inProgressBooks.ToString();
+            int inProgressBooks = UserAndBooks.GetCountInProgressBook();
+            InProgressBooks.Text = inProgressBooks.ToString();
         }
 
         public Func<ChartPoint, string> PointLabel { get; set; }
@@ -61,14 +51,7 @@ namespace Vivarium.WPFforms
 
         public void PieGenerateGenres()
         {
-            Dictionary<string, int> genresValue = new Dictionary<string, int>() // получить названия жанров прочитанных книг и количество
-            {
-                {"Романы", 12},
-                {"Фантастика", 22},
-                {"Детективы", 12},
-                {"Ужасы", 12},
-                {"Комедии", 7}
-            };
+            Dictionary<string, int> genresValue = UserAndBooks.GetGenresValue();
             SeriesGenres = new SeriesCollection();
             AddSeries(SeriesGenres, genresValue, GenresResult);
             DataContext = this;
@@ -76,14 +59,7 @@ namespace Vivarium.WPFforms
 
         public void PieGenerateAuthors()
         {
-            Dictionary<string, int> authorsValue = new Dictionary<string, int>() // получить фамилии авторов прочитанных книг и количество
-            {
-                {"Пушкин", 12},
-                {"Тургенев", 22},
-                {"Лермонтов", 12},
-                {"Гоголь", 12},
-                {"Толстой", 7}
-            };
+            Dictionary<string, int> authorsValue = UserAndBooks.GetAuthorsValue();
             SeriesAuthors = new SeriesCollection();
             AddSeries(SeriesAuthors, authorsValue, AuthorsResult);
             DataContext = this;
@@ -107,14 +83,7 @@ namespace Vivarium.WPFforms
 
         public void PieGenerateYears()
         {
-            Dictionary<string, int> yearValue = new Dictionary<string, int>() // получить количество прочитанных книг по годам
-            {
-                {"2020", 4},
-                {"2021", 4},
-                {"2022", 7},
-                {"2023", 7},
-                {"2024", 1}
-            };
+            Dictionary<string, int> yearValue = UserAndBooks.GetYearValue();
             SeriesYears = new SeriesCollection()
             {
                 new ColumnSeries

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Vivarium.Context;
+using Vivarium.StaticData;
 using Vivarium.View;
 using Vivarium.WPFforms;
 
@@ -31,7 +33,7 @@ namespace Vivarium
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //создать Challenge c CountBooks.Text в Plan для UserId
-            if (PlanBooks != 0)
+            if (PlanBooks > 0)
             {
                 ChallengeAfter challengeAfter = new ChallengeAfter();
                 challengeAfter.Show();
@@ -46,6 +48,16 @@ namespace Vivarium
                 textBox.Text = new string(textBox.Text.Where(ch => Char.IsDigit(ch)).ToArray());
                 var planCountBooks = Convert.ToInt32(textBox.Text);
                 PlanBooks = planCountBooks;
+                var newDate = DateOnly.FromDateTime(DateTime.Now);
+                UserAndBooks.userAndBooks[0].Challenges.Add(new Challenge()
+                {
+                    Id = 1,
+                    ChYear = newDate,
+                    Plan = PlanBooks,
+                    Fact = 0,
+                    UserId = UserAndBooks.userAndBooks[0].Id,
+                    User = UserAndBooks.userAndBooks[0]
+                });
             }
 
         }

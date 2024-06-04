@@ -19,6 +19,7 @@ namespace Vivarium.StaticData
 		public static Status GetStatus(int bookId)
 		{
 			return userAndBooks[0].StatusBooks.Where(sb => sb.Book.Id == bookId).FirstOrDefault().Status;
+<<<<<<< HEAD
 		}
 
 		public static void UpdateBook(StatusBook book, Assessment ass)
@@ -43,5 +44,20 @@ namespace Vivarium.StaticData
 				db.SaveChanges();
 			}
 		}
-	}
+        }
+        public static Dictionary<string, int> GetYearValue()
+        {
+            Dictionary<string, int> dictYears = new Dictionary<string, int>();
+            foreach (var statusBook in userAndBooks[0].StatusBooks.
+                Where(sb => sb.Status.Status1 == "Прочитано"))
+            {
+                string year = statusBook.StDate.Value.Year.ToString();
+                if (dictYears.ContainsKey(year))
+                    dictYears[year] += 1;
+                else dictYears.Add(year, 1);
+            }
+            return dictYears;
+        }
+    }
+>>>>>>> ea0a6313eb26e11a0b3b79a00eb559ec5b9b0803
 }

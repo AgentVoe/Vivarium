@@ -1,7 +1,17 @@
-﻿using System.Windows;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using Vivarium.Authorization;
 using Vivarium.Context;
+using Vivarium.Control;
 using Vivarium.StaticData;
 
 namespace Vivarium.View
@@ -11,9 +21,13 @@ namespace Vivarium.View
     /// </summary>
     public partial class BookCard : Window
     {
+        private Book _book;
         public BookCard(Book book)
         {
             InitializeComponent();
+
+
+            _book = book;
 
             name.Text = book.Title;
             author.Text = book.BooksAuthors.First().Author.Name;
@@ -25,12 +39,25 @@ namespace Vivarium.View
             genres = genres.Remove(genres.Length - 2);
             genre.Text += genres;
 
-            List<int?> grades = new List<int?>();
-            foreach (var item in book.Assessments)
-                grades.Add(item.Grade.Grade1);
-            rating.Text += grades.Average();
+            //List<int?> grades = new List<int?>();
+            //foreach (var item in book.Assessments)
+            //    grades.Add(item.Grade.Grade1);
+            //rating.Text += grades.Average();
 
-            grade = 0; //получить assessment для book от user (если есть)
+            if (Logged.IsLoggedIn)
+            {
+                if (UserAndBooks.userAndBooks[0].StatusBooks.Any(b => b.BookId == _book.Id))
+                {
+                    grade = UserAndBooks.userAndBooks[0].Assessments
+                    .Where(b => b.BookId == _book.Id).FirstOrDefault().Grade.Grade1;
+                    rating.Text = grade.ToString();
+                }
+            }
+            else
+            {
+                grade = 0;
+            }
+
             switch (grade)
             {
                 case 1:
@@ -53,14 +80,21 @@ namespace Vivarium.View
             }
 
             status.ItemsSource = Books.statuses;
-            Status statusBook = UserAndBooks.GetStatus(book.Id);
-            if (statusBook != null)
-                foreach (Status item in status.Items)
-                    if (item.Status1 == statusBook.Status1)
-                    { 
-                        status.SelectedItem = item;
-                        break;
-                    }
+            if (Logged.IsLoggedIn)
+            {
+                if (UserAndBooks.userAndBooks[0].StatusBooks.Any(b => b.BookId == _book.Id))
+                {
+                    Status statusBook = UserAndBooks.GetStatus(book.Id);
+                    if (statusBook != null)
+                        foreach (Status item in status.Items)
+                            if (item.Status1 == statusBook.Status1)
+                            {
+                                status.SelectedItem = item;
+                                break;
+                            }
+                }
+            }
+            else status.SelectedIndex = 0;
         }
 
         private int grade;
@@ -142,7 +176,140 @@ namespace Vivarium.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // сохранить grade для book от user
+            if (!Logged.IsLoggedIn)
+                return;
+            var bookStatus = status.Text;
+            int statusId = 0;
+
+            if (bookStatus == "Хочу прочитать")
+            {
+                statusId = 11;
+            }
+            else if (bookStatus == "Прочитано")
+            {
+                statusId = 7;
+            }
+            else if (bookStatus == "Читаю")
+            {
+                statusId = 8;
+            }
+            else if (bookStatus == "Заброшено")
+            {
+                statusId = 9;
+            }
+            if (!UserAndBooks.userAndBooks[0].StatusBooks.Any(b => b.BookId == _book.Id))
+            {
+                var newStatusBook = new StatusBook
+                {
+                    StatusId = statusId,
+                    BookId = _book.Id,
+                    Book = new Book()
+                    {
+                        Id = _book.Id,
+                        Title = _book.Title,
+                        BYear = _book.BYear,
+                        BooksAuthors = new List<BooksAuthor>()
+                        {
+                            new BooksAuthor()
+                            {
+                                Author = new Author()
+                                {
+                                    Id = _book.BooksAuthors.First().Author.Id,
+                                    Name = _book.BooksAuthors.First().Author.Name
+                                 },
+                                AuthorId = _book.BooksAuthors.First().Author.Id
+                            }
+                        },
+                        BooksGenres = new List<BooksGenre>()
+                        {
+                            new BooksGenre()
+                            {
+                                Genre = new Genre()
+                                {
+                                    Id = _book.BooksGenres.First().Genre.Id,
+                                    GenreName = _book.BooksGenres.First().Genre.GenreName
+                                },
+                                GenreId = _book.BooksGenres.First().GenreId,
+                            }
+                        },
+                        Assessments = new List<Assessment>()
+                        {
+                            new Assessment()
+                            {
+                                Grade = new Grade()
+                                {
+                                    Id = grade,
+                                    Grade1 = grade,
+                                },
+                                GradeId = grade,
+                            }
+                        }
+                    },
+                    UserId = UserAndBooks.userAndBooks[0].Id,
+                    User = new User()
+                    {
+                        Id = UserAndBooks.userAndBooks[0].Id,
+                        Login = UserAndBooks.userAndBooks[0].Login
+                    },
+                    Status = new Status()
+                    {
+                        Id = statusId,
+                        Status1 = bookStatus
+                    },
+                    StDate = DateOnly.Parse(DateTime.Now.ToShortDateString().ToString()),
+
+                };
+
+                var bookToUserId = new StatusBook()
+                {
+                    StatusId = statusId,
+                    BookId = _book.Id,
+                    UserId = UserAndBooks.userAndBooks[0].Id,
+                    StDate = DateOnly.Parse(DateTime.Now.ToShortDateString().ToString()),
+                };
+
+                var userBookGrade = new Assessment()
+                {
+                    UserId = UserAndBooks.userAndBooks[0].Id,
+                    BookId = _book.Id,
+                    GradeId = grade,
+                };
+
+                var newAssessment = new Assessment()
+                {
+                    BookId = _book.Id,
+                    GradeId = grade,
+                    Grade = new Grade()
+                    {
+                        Id = grade,
+                        Grade1 = grade
+                    }
+                };
+                UserAndBooks.userAndBooks[0].Assessments.Add(newAssessment);
+                UserAndBooks.userAndBooks[0].StatusBooks.Add(newStatusBook);
+
+                new Controller().TryToAddBookToUser(bookToUserId, userBookGrade);
+            }
+            else
+            {
+                //var bookToUserId = new StatusBook()
+                //{
+                //    StatusId = statusId,
+                //    BookId = _book.Id,
+                //    UserId = UserAndBooks.userAndBooks[0].Id,
+                //    StDate = DateOnly.Parse(DateTime.Now.ToShortDateString().ToString()),
+                //};
+
+                //var userBookGrade = new Assessment()
+                //{
+                //    UserId = UserAndBooks.userAndBooks[0].Id,
+                //    BookId = _book.Id,
+                //    GradeId = grade,
+                //};
+
+                //new Controller().TryToUpdateBook(bookToUserId, userBookGrade);
+            }
+
         }
 
         private void status_SelectionChanged(object sender, SelectionChangedEventArgs e)

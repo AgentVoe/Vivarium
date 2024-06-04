@@ -10,7 +10,7 @@ namespace Vivarium
 		{
 			LoadAuthorsAndBooks();
 			LoadStatuses();
-        }
+		}
 		public DataLoader(string login)
 		{
 			this.login = login;
@@ -78,6 +78,7 @@ namespace Vivarium
 					{
 						Id = ub.Id,
 						StDate = ub.StDate,
+						BookId = ub.Book.Id,
 						Book = new Book()
 						{
 							Id = ub.Book.Id,
@@ -100,13 +101,37 @@ namespace Vivarium
 									Id = genre.Genre.Id,
 									GenreName = genre.Genre.GenreName
 								}
-							}).ToList()
-						},
+							}).ToList(),
+                            Assessments = ub.Book.Assessments.Select(a => new Assessment()
+                            {
+                                Id = a.Id,
+                                GradeId = a.Grade.Id,
+                                Grade = new Grade()
+                                {
+                                    Id = a.Grade.Id,
+                                    Grade1 = a.Grade.Grade1
+                                },
+                                UserId = ub.User.Id,
+                                BookId = ub.Book.Id,
+                            }).ToList()
+                        },
 						Status = new Status()
 						{
 							Id = ub.Status.Id,
 							Status1 = ub.Status.Status1
 						}
+					}).ToList(),
+					Assessments = u.Assessments.Select(a => new Assessment()
+					{
+						Id = a.Id,
+						GradeId = a.Grade.Id,
+						Grade = new Grade()
+						{
+							Id = a.Grade.Id,
+							Grade1 = a.Grade.Grade1
+						},
+						UserId = a.User.Id,
+						BookId = a.Book.Id,
 					}).ToList()
 				})
 				.ToList();
@@ -115,6 +140,7 @@ namespace Vivarium
 		/*
 			Процедура выгружает статусы из БД
 		*/
+
 		private void LoadStatuses()
 		{
 			using (VivariumDContext db = new VivariumDContext())
@@ -122,6 +148,6 @@ namespace Vivarium
 				Books.statuses = db.Statuses.ToList();
 			}
 		}
-        #endregion
-    }
+		#endregion
+	}
 }

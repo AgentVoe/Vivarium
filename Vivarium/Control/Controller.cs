@@ -1,5 +1,7 @@
 ﻿using Vivarium.Authorization;
+using Vivarium.Context;
 using Vivarium.Registration;
+using Vivarium.StaticData;
 
 namespace Vivarium.Control
 {
@@ -37,5 +39,13 @@ namespace Vivarium.Control
 		{
 			new DataLoader();
 		}
+		public void TryToAddBookToUser(StatusBook book, Assessment ass)
+		{
+			UserAndBooks.AddBookToUser(book, ass);
+		}
+		public void TryToUpdateBook(StatusBook book, Assessment ass)
+		{
+            UserAndBooks.UpdateBook(book, ass);
+        }
 	}
 }

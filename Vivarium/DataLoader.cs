@@ -9,7 +9,8 @@ namespace Vivarium
 		public DataLoader()
 		{
 			LoadAuthorsAndBooks();
-		}
+			LoadStatuses();
+        }
 		public DataLoader(string login)
 		{
 			this.login = login;
@@ -111,6 +112,16 @@ namespace Vivarium
 				.ToList();
 			}
 		}
-		#endregion
-	}
+		/*
+			Процедура выгружает статусы из БД
+		*/
+		private void LoadStatuses()
+		{
+			using (VivariumDContext db = new VivariumDContext())
+			{
+				Books.statuses = db.Statuses.ToList();
+			}
+		}
+        #endregion
+    }
 }

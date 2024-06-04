@@ -81,7 +81,16 @@ namespace Vivarium
 						{
 							Id = ub.Book.Id,
 							Title = ub.Book.Title,
-							BYear = ub.Book.BYear,
+                            BooksAuthors = ub.Book.BooksAuthors.Select(a => new BooksAuthor
+                            {
+                                Id = a.Id,
+                                Author = new Author()
+                                {
+                                    Id = a.Id,
+                                    Name = a.Author.Name
+                                }
+                            }).ToList(),
+                            BYear = ub.Book.BYear,
 							BooksGenres = ub.Book.BooksGenres.Select(genre => new BooksGenre()
 							{
 								Id = genre.Id,

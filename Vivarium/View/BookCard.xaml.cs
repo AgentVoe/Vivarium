@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Vivarium.Context;
+using Vivarium.Control;
+using Vivarium.StaticData;
 
 namespace Vivarium.View
 {
@@ -20,9 +22,12 @@ namespace Vivarium.View
     /// </summary>
     public partial class BookCard : Window
     {
+        private Book _book;
         public BookCard(Book book)
         {
             InitializeComponent();
+
+            _book = book;
 
             name.Text = book.Title;
             author.Text = book.BooksAuthors.First().Author.Name;
@@ -39,7 +44,10 @@ namespace Vivarium.View
                 grades.Add(item.Grade.Grade1);
             rating.Text += grades.Average();
 
-            grade = 0; //получить assessment для book от user (если есть)
+
+
+            grade = UserAndBooks.userAndBooks[0].Assessments
+                .Where(b => b.BookId == _book.Id).FirstOrDefault().Grade.Grade1; //получить assessment для book от user (если есть)
             switch (grade)
             {
                 case 1:
@@ -61,18 +69,18 @@ namespace Vivarium.View
                     break;
             }
 
-            List<Status> statuses = new List<Status> // получить список статусов
-            {
-                new Status{Status1 = "не читал"},
-                new Status{Status1 = "хочу прочитать"},
-                new Status{Status1 = "прочитано"},
-                new Status{Status1 = "читаю"},
-                new Status{Status1 = "перестал читать"},
-            };
+			status.ItemsSource = Books.statuses;
+            Status statusBook = UserAndBooks.GetStatus(book.Id);
+            if (statusBook != null)
+                foreach (Status item in status.Items)
+                    if (item.Status1 == statusBook.Status1)
+                    {
+                        status.SelectedItem = item;
+                        break;
+                    }
 
-            status.ItemsSource = statuses;
 
-            status.SelectedIndex = 0; // получить statusBook для book от user (если есть)
+           // status.SelectedIndex = 0; // получить statusBook для book от user (если есть)
         }
 
         private int grade;
@@ -154,8 +162,102 @@ namespace Vivarium.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // сохранить grade для book от user
-        }
+            var bookStatus =  status.Text;
+            int statusId = 0;
+
+            if (bookStatus == "Хочу прочитать")
+            {
+                statusId = 11;
+            }
+            else if (bookStatus == "Прочитано")
+            {
+                statusId = 7;
+            }
+            else if (bookStatus == "Читаю")
+            {
+                statusId = 8;
+            }
+            else if (bookStatus == "Заброшено")
+            {
+                statusId = 9;
+            }
+
+            var newStatusBook = new StatusBook
+            {
+                StatusId = statusId,
+                BookId = _book.Id,
+                Book = new Book()
+                {
+                    Id = _book.Id,
+                    Title = _book.Title,
+                    BYear = _book.BYear,
+                    BooksAuthors = new List<BooksAuthor>()
+                    {
+                        new BooksAuthor()
+                        {
+                            Author = new Author()
+                            {
+                                Id = _book.BooksAuthors.First().Author.Id,
+                                Name = _book.BooksAuthors.First().Author.Name
+                             },
+                            AuthorId = _book.BooksAuthors.First().Author.Id
+                        }
+                    },
+                    BooksGenres = new List<BooksGenre>()
+                    {
+                        new BooksGenre()
+                        {
+                            Genre = new Genre()
+                            {
+                                Id = _book.BooksGenres.First().Genre.Id,
+                                GenreName = _book.BooksGenres.First().Genre.GenreName
+                            },
+                            GenreId = _book.BooksGenres.First().GenreId,
+                        }
+                    },
+                    Assessments = new List<Assessment>()
+                    {
+                        new Assessment()
+                        {
+                            Id = _book.Assessments.First().Id,
+                            GradeId = grade,
+                        }                        
+                    }
+                },
+                UserId = UserAndBooks.userAndBooks[0].Id,
+                User = new User()
+                {
+                    Id = UserAndBooks.userAndBooks[0].Id,
+                    Login = UserAndBooks.userAndBooks[0].Login
+                },
+                Status = new Status()
+                {
+                    Id = statusId,
+                    Status1 = bookStatus
+                },
+                StDate = DateOnly.Parse(DateTime.Now.ToShortDateString().ToString()),
+
+            }; 
+
+            var bookToUserId = new StatusBook()
+            {
+                StatusId = statusId,
+                BookId = _book.Id,
+                UserId = UserAndBooks.userAndBooks[0].Id,
+                StDate = DateOnly.Parse(DateTime.Now.ToShortDateString().ToString()),
+            };
+
+            var userBookGrade = new Assessment()
+            {
+                UserId = UserAndBooks.userAndBooks[0].Id,
+                BookId = _book.Id,
+                GradeId = grade,
+            };
+            UserAndBooks.userAndBooks[0].StatusBooks.Add(newStatusBook);
+
+            new Controller().TryToAddBookToUser(bookToUserId);
+			
+		}
 
         private void status_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

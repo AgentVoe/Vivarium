@@ -92,7 +92,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Автор" Width="300" Binding="{Binding Path=Author.Surname}">
+                <DataGridTextColumn Header="Автор" Width="300" Binding="{Binding Path=}">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center"/>
